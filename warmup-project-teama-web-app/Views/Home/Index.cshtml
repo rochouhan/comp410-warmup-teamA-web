@@ -1,8 +1,48 @@
-﻿@{
+﻿@using System.Security.Cryptography.X509Certificates
+@model TableViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Look up any info you want! :)</p>
+@*<select id="searchBy">
+    <option value="Name">Name</option>
+    <option value="GPS">GPS</option>
+    <option value="Datetime">Datetime</option>
+</select>
+<input class="" type="text" id="search" placeholder="Search" />
+<input type="button" id="queryBtn" class="btn btn-secondary query-button" value="Search" />*@
+<form asp-controller="Home" asp-action="Index">
+    <p>
+        Name: <input type="text" name="SearchString" />
+        <input type="submit" value="Query" />
+    </p>
+</form>
+
+<table class="table table-striped" aria-labelledby="tabelLabel">
+    <thead>
+        <tr>
+            <th>User ID</th>
+            <th>Date</th>
+            <th>Additional Information</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var data in Model.table)
+        {
+            if (data != null)
+            {
+                string s = string.Join("; ", data.otherinfo.Select(x => x.Key + ": " + x.Value).ToArray());
+                <tr>
+                    <td>@data.uid</td>
+                    <td>@data.date</td>
+                    <td>@s</td>
+                </tr>
+
+            }
+        }
+    </tbody>
+</table>

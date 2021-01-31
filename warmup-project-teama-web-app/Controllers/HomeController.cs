@@ -18,9 +18,43 @@ namespace warmup_project_teama_web_app.Controllers
             _logger = logger;
         }
 
+        /*
+         * Initial view set-up
+         */
         public IActionResult Index()
         {
-            return View();
+            // ALL HARD-CODED INFO
+            // PLEASE DELETE LATER
+            Dictionary<string, string> otherinfo1 = new Dictionary<string, string>();
+            otherinfo1.Add("height", "5.6");
+            otherinfo1.Add("weight", "134");
+
+            Dictionary<string, string> otherinfo2 = new Dictionary<string, string>();
+            otherinfo2.Add("favorite food", "pasta");
+
+            List<Entry> entries = new List<Entry>();
+            entries.Add(new Entry("userid0000", DateTime.Now, otherinfo1));
+            entries.Add(new Entry("userid2222", DateTime.UnixEpoch, otherinfo2));
+
+            return View(new TableViewModel(entries));
+        }
+
+        /*
+         * Index view after an HTTP POST request.
+         * Takes in parameters from the view.
+         */
+        [HttpPost]
+        public IActionResult Index(string searchString, bool notUsed)
+        {
+            // ALL HARD-CODED INFO
+            // PLEASE DELETE LATER
+            Dictionary<string, string> otherinfo1 = new Dictionary<string, string>();
+            otherinfo1.Add("eye color", "brown");
+
+            List<Entry> entries = new List<Entry>();
+            entries.Add(new Entry(searchString, DateTime.Now, otherinfo1));
+
+            return View(new TableViewModel(entries));
         }
 
         public IActionResult Privacy()
