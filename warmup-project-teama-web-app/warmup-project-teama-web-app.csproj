@@ -5,4 +5,7 @@
     <RootNamespace>warmup_project_teama_web_app</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\Adapters\" />
+  </ItemGroup>
 </Project>

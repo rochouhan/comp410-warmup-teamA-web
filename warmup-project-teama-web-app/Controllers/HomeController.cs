@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using warmup_project_teama_web_app.Controllers.Adapters;
 using warmup_project_teama_web_app.Models;
 
 namespace warmup_project_teama_web_app.Controllers
@@ -12,6 +13,8 @@ namespace warmup_project_teama_web_app.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+
+        private ICloudAdapter cloudAdapter = new CloudAdapter();
 
         public HomeController(ILogger<HomeController> logger)
         {
