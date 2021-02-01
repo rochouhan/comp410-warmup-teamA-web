@@ -12,7 +12,7 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
         /// Executes the query by making a remote call to the API
         /// </summary>
         /// <param name="queryParams">A series of params that will be used to query the database</param>
-        /// <returns>Response from API, that has been transformed into a TableViewModel object.</returns>
+        /// <returns>A response from API that has been transformed into a TableViewModel object.</returns>
         public TableViewModel execute(string queryParams);
 
         /// <summary>

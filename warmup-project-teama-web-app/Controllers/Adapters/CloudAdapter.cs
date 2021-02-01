@@ -11,12 +11,12 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
 
         public string authenticate(string authString)
         {
-            throw new NotImplementedException();
+            return null; //TODO
         }
 
         public TableViewModel execute(string queryParams)
         {
-            throw new NotImplementedException();
+            return null; //TODO
         }
     }
 }

@@ -21,9 +21,10 @@ namespace warmup_project_teama_web_app.Controllers
             _logger = logger;
         }
 
-        /*
-         * Initial view set-up
-         */
+        /// <summary>
+        /// Initial view set-up
+        /// </summary>
+        /// <returns>Initial view</returns>
         public IActionResult Index()
         {
             // ALL HARD-CODED INFO
@@ -42,22 +43,22 @@ namespace warmup_project_teama_web_app.Controllers
             return View(new TableViewModel(entries));
         }
 
-        /*
-         * Index view after an HTTP POST request.
-         * Takes in parameters from the view.
-         */
+        /// <summary>
+        /// Index view after an HTTP POST request.
+        /// </summary>
+        /// <param name="searchString">Parameters from the view to query the API</param>
+        /// <param name="notUsed">Used to overload method</param>
+        /// <returns>View with populated data from API</returns>
         [HttpPost]
         public IActionResult Index(string searchString, bool notUsed)
         {
-            // ALL HARD-CODED INFO
-            // PLEASE DELETE LATER
-            Dictionary<string, string> otherinfo1 = new Dictionary<string, string>();
-            otherinfo1.Add("eye color", "brown");
-
-            List<Entry> entries = new List<Entry>();
-            entries.Add(new Entry(searchString, DateTime.Now, otherinfo1));
-
-            return View(new TableViewModel(entries));
+            TableViewModel entries = cloudAdapter.execute(searchString);
+            if (entries == null)
+            {
+                //TODO: Maybe this isn't the cleanest way to handle the error case
+                return View(new TableViewModel(new List<Entry>()));
+            }
+            return View(entries);
         }
 
         public IActionResult Privacy()
