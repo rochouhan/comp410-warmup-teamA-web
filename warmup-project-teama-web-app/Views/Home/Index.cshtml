@@ -41,12 +41,12 @@
         var index = $("#tbQueries").children("tr").length;
 
         var indexCell = "<td style='display:none'><input name='Index' type='hidden' value='" + index + "' /></td>";
-        var titleCell = "<td><input id='Queries_" + index + "__Title' name='[" + index + "].Key' type='text' value='' /></td>";
-        var publishedCell = "<td><input id='Queries_" + index + "__Title' name='[" + index + "].Value' type='text' value='' /></td>";
+        var keyCell = "<td><input id='Queries_" + index + "__Title' name='[" + index + "].Key' type='text' value='' /></td>";
+        var valueCell = "<td><input id='Queries_" + index + "__Title' name='[" + index + "].Value' type='text' value='' /></td>";
         var removeCell = "<td><input id='btnAddQuery' type='button' value='Remove' onclick='removeRow(" + index + ");' /></td>";
 
         var newRow = "<tr id='trQuery" + index + "'>" + 
-            indexCell + titleCell + publishedCell + removeCell + "</tr>";
+            indexCell + keyCell + valueCell + removeCell + "</tr>";
         $("#tbQueries").append(newRow);
     }
 
