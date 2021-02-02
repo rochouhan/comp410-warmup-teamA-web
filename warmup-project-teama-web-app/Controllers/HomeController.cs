@@ -22,43 +22,27 @@ namespace warmup_project_teama_web_app.Controllers
             _logger = logger;
         }
 
-        /*
-         * Initial view set-up
-         */
+        /// <summary>
+        /// Initial set-up of the view.
+        /// </summary>
+        /// <returns>View with empty table</returns>
         public IActionResult Index()
         {
             return View(new TableViewModel());
         }
 
-        /*
-         * Index view after an HTTP POST request.
-         * Takes in parameters from the view.
-         */
+        /// <summary>
+        /// Takes in query parameters and updates the table in the view
+        /// </summary>
+        /// <param name="dataList">A list of query parameters</param>
+        /// <returns>An updated view with a filled TableViewModel</returns>
         [HttpPost]
-        public IActionResult Index(string searchString, bool notUsed)
-        {
-            TableViewModel entries = cloudAdapter.execute(searchString);
-            if (entries == null)
-            {
-                //TODO: Maybe this isn't the cleanest way to handle the error case
-                return View(new TableViewModel(new List<Entry>()));
-            }
-            return View(entries);
         public IActionResult Index(ICollection<KVPair> dataList)
         {
             if (ModelState.IsValid && dataList.Count > 0)
             {
-                // This is all dummy code to make sure that the controller
-                // successfully gets the data from the user-inputted query.
-                // Change this so that it goes through the cloud adapter.
-                List<Entry> dummyTable = new List<Entry>();
-                foreach (var pair in dataList)
-                {
-                    dummyTable.Add(new Entry(pair.Key + ": " + pair.Value, DateTime.Now, new Dictionary<string, string>()));
-                }
-
-                return View(new TableViewModel(dummyTable));
-
+                TableViewModel entries = cloudAdapter.execute(dataList);
+                return View(entries);
             }
             return View(new TableViewModel());
         }

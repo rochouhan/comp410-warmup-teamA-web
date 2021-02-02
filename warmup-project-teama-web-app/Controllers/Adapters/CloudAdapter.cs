@@ -1,6 +1,7 @@
 ﻿using System;
 using warmup_project_teama_web_app.Models;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -43,9 +44,9 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
         }
 
 
-        public TableViewModel execute(string queryParams)
+        public TableViewModel execute(ICollection<KVPair> queryParams)
         {
-            return null; //TODO
+            return new TableViewModel(); //TODO
         }
 
         public async Task Main(string[] args)

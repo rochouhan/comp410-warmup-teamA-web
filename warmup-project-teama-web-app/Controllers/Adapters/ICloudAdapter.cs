@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using warmup_project_teama_web_app.Models;
 using System.Threading.Tasks;
 
@@ -14,7 +15,7 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
         /// </summary>
         /// <param name="queryParams">A series of params that will be used to query the database</param>
         /// <returns>A response from API that has been transformed into a TableViewModel object.</returns>
-        public TableViewModel execute(string queryParams);
+        public TableViewModel execute(ICollection<KVPair> queryParams);
 
         /// <summary>
         /// Authenticate application with API.
