@@ -3,38 +3,35 @@ using warmup_project_teama_web_app.Models;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-//TODO: INSTALL JSON STUFF
 using Newtonsoft.Json;
-using System.IO;
-using Newtonsoft.Json.Linq;
 using System.Globalization;
 
 namespace warmup_project_teama_web_app.Controllers.Adapters
 {
     public class CloudAdapter : ICloudAdapter
     {
-        String gotAuthToken;
         static readonly HttpClient client = new HttpClient();
 
         public CloudAdapter()
         {
         }
 
-        public async Task<string> Authenticate(string authString)
+        public async Task<bool> Authenticate(string user_id)
         {
             try
             {
                 using (var requestMessage =
-                    new HttpRequestMessage(HttpMethod.Post, "https://my-resource.azure-api.net/api/CreateNewRecord?name=WebTeam"))
+                    new HttpRequestMessage(HttpMethod.Post, "https://my-resource.azure-api.net/api/auth?user_id=" + user_id))
                 {
-                    requestMessage.Headers.Add("Ocp-Apim-Subscription-Key", authString);
+                    requestMessage.Headers.Add("Ocp-Apim-Subscription-Key", "83a2f1db11ec471ebf824546a59cfef0");
                     HttpResponseMessage response = await client.SendAsync(requestMessage);
                     response.EnsureSuccessStatusCode();
                     string responseBody = await response.Content.ReadAsStringAsync();
 
-                    Console.WriteLine(responseBody);
+                    AuthStructure jsonResponse = JsonConvert.DeserializeObject<AuthStructure>(responseBody);
+                    System.Diagnostics.Debug.WriteLine(jsonResponse);
 
-                    return responseBody;
+                    return jsonResponse.success;
                 }
             }
             catch (HttpRequestException e)
@@ -43,7 +40,7 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
                 Console.WriteLine("Message :{0} ", e.Message);
             }
             
-            return null; //TODO
+            return false; // else case
         }
 
         public async Task<TableViewModel> Execute(ICollection<KVPair> queryParams)
@@ -141,15 +138,15 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
             return "";
         }
 
-        public async Task Main(string[] args)
-        {
-            Console.WriteLine("Hello World..!");
+        //public async Task Main(string[] args)
+        //{
+            //Console.WriteLine("Hello World..!");
 
-            gotAuthToken = await Authenticate("83a2f1db11ec471ebf824546a59cfef0");
+            //gotAuthToken = await Authenticate("83a2f1db11ec471ebf824546a59cfef0");
 
             //string executeReturn = await Execute("user_id eq user21231");
-            System.Diagnostics.Debug.WriteLine("finished");
+            //System.Diagnostics.Debug.WriteLine("finished");
 
-        }
+        //}
     }
 }

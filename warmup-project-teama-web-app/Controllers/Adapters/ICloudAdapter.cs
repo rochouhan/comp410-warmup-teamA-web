@@ -22,7 +22,7 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
         /// </summary>
         /// <param name="authString">Auth to pass to API for authentication.</param>
         /// <returns>User ID to use for future API calls.</returns>
-        Task<string> Authenticate(string authString);
+        Task<bool> Authenticate(string authString);
 
         /// <summary>
         /// Convert data from API to feed to ViewModel.
