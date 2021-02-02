@@ -1,5 +1,6 @@
 ﻿using System;
 using warmup_project_teama_web_app.Models;
+using System.Threading.Tasks;
 
 namespace warmup_project_teama_web_app.Controllers.Adapters
 {
@@ -20,6 +21,6 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
         /// </summary>
         /// <param name="authString">Auth to pass to API for authentication.</param>
         /// <returns>User ID to use for future API calls.</returns>
-        public string authenticate(string authString);
+        Task<string> authenticate(string authString);
     }
 }

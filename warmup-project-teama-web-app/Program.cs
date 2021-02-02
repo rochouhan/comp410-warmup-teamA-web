@@ -7,6 +7,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using warmup_project_teama_web_app.Models;
+using warmup_project_teama_web_app.Controllers.Adapters;
+
 namespace warmup_project_teama_web_app
 {
     public class Program
