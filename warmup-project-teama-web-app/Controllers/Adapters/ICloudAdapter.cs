@@ -15,27 +15,34 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
         /// </summary>
         /// <param name="queryParams">A series of params that will be used to query the database</param>
         /// <returns>A response from API that has been transformed into a TableViewModel object.</returns>
-        Task<TableViewModel> execute(ICollection<KVPair> queryParams);
+        Task<TableViewModel> Execute(ICollection<KVPair> queryParams);
 
         /// <summary>
         /// Authenticate application with API.
         /// </summary>
         /// <param name="authString">Auth to pass to API for authentication.</param>
         /// <returns>User ID to use for future API calls.</returns>
-        Task<string> authenticate(string authString);
+        Task<string> Authenticate(string authString);
 
         /// <summary>
         /// Convert data from API to feed to ViewModel.
         /// </summary>
         /// <param name="json">JSON object received from API.</param>
         /// <returns>TableViewModel.</returns>
-        TableViewModel toViewModel(List<RootStructure> json);
+        TableViewModel ToViewModel(List<RootStructure> json);
 
         /// <summary>
         /// Convert data from ViewModel to API.
         /// </summary>
         /// <param name="authString">tbd.</param>
         /// <returns>String to format into HTTP request.</returns>
-        string fromViewModel();
+        string ToRequestFormat();
+
+        /// <summary>
+        /// Helper function to convert data from list of OtherInfoStructure to Dictionary of string, string pairs.
+        /// </summary>
+        /// <param name="otherInfoList">The list of OtherInfoStructure from the parsed JSON object</param>
+        /// <returns>String to format into HTTP request.</returns>
+        Dictionary<string, string> ToDictionary(List<OtherInfoStructure> otherInfoList);
     }
 }

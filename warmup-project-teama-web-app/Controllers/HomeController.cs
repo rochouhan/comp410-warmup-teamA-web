@@ -41,7 +41,7 @@ namespace warmup_project_teama_web_app.Controllers
         {
             if (ModelState.IsValid && dataList.Count > 0)
             {
-                TableViewModel entries = cloudAdapter.execute(dataList);
+                TableViewModel entries = cloudAdapter.Execute(dataList).Result;
                 return View(entries);
             }
             return View(new TableViewModel());

@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 //TODO: INSTALL JSON STUFF
-//using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System.IO;
+using Newtonsoft.Json.Linq;
+using System.Globalization;
 
 namespace warmup_project_teama_web_app.Controllers.Adapters
 {
@@ -18,7 +20,7 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
         {
         }
 
-        public async Task<string> authenticate(string authString)
+        public async Task<string> Authenticate(string authString)
         {
             try
             {
@@ -44,9 +46,17 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
             return null; //TODO
         }
 
-        public async Task<TableViewModel> execute(ICollection<KVPair> queryParams)
+        public async Task<TableViewModel> Execute(ICollection<KVPair> queryParams)
         {
-            string strQueryParams = queryParams.ToString(); // TODO: FIX THIS!!!
+            List<string> queries = new List<string>();
+            
+            foreach (KVPair kvpair in queryParams)
+            {
+                queries.Add(kvpair.ToString());
+            }
+
+            // for now just getting first query to make request to API
+            string strQueryParams = queries[0];
 
             string[] splitParams = strQueryParams.Split(' ');
             string chars = splitParams[0];
@@ -73,11 +83,10 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
                     System.Diagnostics.Debug.WriteLine(responseBody);
                     Console.WriteLine(responseBody);
 
-                    //TODO: INSTALL JSON STUFF
-                    //List<RootStructure> jsonResponse = JsonConvert.DeserializeObject<List<RootStructure>>(responseBody);
-                    //System.Diagnostics.Debug.WriteLine(jsonResponse);
+                    List<RootStructure> jsonResponse = JsonConvert.DeserializeObject<List<RootStructure>>(responseBody);
+                    System.Diagnostics.Debug.WriteLine(jsonResponse);
 
-                    // return responseBody;
+                    return ToViewModel(jsonResponse);
 
                 }
             }
@@ -90,15 +99,44 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
             return null; //TODD
         }
 
-        public TableViewModel toViewModel(List<RootStructure> json)
+        public TableViewModel ToViewModel(List<RootStructure> json)
         {
-            //TODO: INSTALL JSON STUFF
-            //JObject data = JObject.Parse(File.ReadAllText("test1.json"));
-            
-            return new TableViewModel();
+            List<Entry> entries = new List<Entry>();
+
+            foreach (RootStructure item in json)
+            {
+                // TODO: modify when we get final date time format from API group
+                string pattern = "MMMM dd h:mmtt";
+                DateTime parsedDate;
+                string newDateTime = item.time.Substring(0, item.time.Length - 4);
+
+                if (DateTime.TryParseExact(newDateTime, pattern, null, DateTimeStyles.None, out parsedDate))
+                {
+                    Entry entry = new Entry(item.user_id, parsedDate, ToDictionary(item.other_info));
+                    entries.Add(entry);
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("Unable to convert '{0}' to a date and time.", newDateTime);
+                }
+            }
+
+            return new TableViewModel(entries);
         }
 
-        public string fromViewModel()
+        public Dictionary<string, string> ToDictionary(List<OtherInfoStructure> otherInfoList)
+        {
+            Dictionary<string, string> otherInfoDict = new Dictionary<string, string>();
+
+            foreach (OtherInfoStructure otherInfo in otherInfoList)
+            {
+                otherInfoDict[otherInfo.contentType] = otherInfo.value;
+            }
+
+            return otherInfoDict;
+        }
+
+        public string ToRequestFormat()
         {
             return "";
         }
@@ -107,8 +145,7 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
         {
             Console.WriteLine("Hello World..!");
 
-            gotAuthToken = await authenticate("83a2f1db11ec471ebf824546a59cfef0");
-            //await execute("latitude gt 0");
+            gotAuthToken = await Authenticate("83a2f1db11ec471ebf824546a59cfef0");
 
             //string executeReturn = await Execute("user_id eq user21231");
             System.Diagnostics.Debug.WriteLine("finished");
