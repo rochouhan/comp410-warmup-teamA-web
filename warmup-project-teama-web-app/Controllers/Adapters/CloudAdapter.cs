@@ -45,20 +45,19 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
 
         public async Task<TableViewModel> Execute(ICollection<KVPair> queryParams)
         {
-            List<string> queries = new List<string>();
-            
-            foreach (KVPair kvpair in queryParams)
-            {
-                queries.Add(kvpair.ToString());
-            }
+            //foreach (KVPair kvpair in queryParams)
+            //{
+            //    queries.Add(kvpair.ToString());
+            //}
 
             // for now just getting first query to make request to API
-            string strQueryParams = queries[0];
+            KVPair[] queryParamsList = new KVPair[queryParams.Count];
+            queryParams.CopyTo(queryParamsList, 0);
+            KVPair firstKVPair = queryParamsList[0];
 
-            string[] splitParams = strQueryParams.Split(' ');
-            string chars = splitParams[0];
-            string op = splitParams[1];
-            string val = splitParams[2];
+            string chars = firstKVPair.Key;
+            string op = "eq";
+            string val = firstKVPair.Value;
             string requestString = "https://my-resource.azure-api.net/api/read?characteristic=" + chars + "&operator=" + op + "&value=" + val;
 
             System.Diagnostics.Debug.WriteLine(requestString);
@@ -73,18 +72,14 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
                     response.EnsureSuccessStatusCode();
                     string responseBody = await response.Content.ReadAsStringAsync();
 
-                    Console.Write(response);
                     System.Diagnostics.Debug.WriteLine(response);
-                    Console.WriteLine("here!");
                     System.Diagnostics.Debug.WriteLine("here yes!");
                     System.Diagnostics.Debug.WriteLine(responseBody);
-                    Console.WriteLine(responseBody);
 
                     List<RootStructure> jsonResponse = JsonConvert.DeserializeObject<List<RootStructure>>(responseBody);
                     System.Diagnostics.Debug.WriteLine(jsonResponse);
 
                     return ToViewModel(jsonResponse);
-
                 }
             }
             catch (HttpRequestException e)
@@ -93,7 +88,7 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
                 Console.WriteLine("Message :{0} ", e.Message);
             }
 
-            return null; //TODD
+            return new TableViewModel();
         }
 
         public TableViewModel ToViewModel(List<RootStructure> json)
