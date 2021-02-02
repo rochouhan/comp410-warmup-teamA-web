@@ -7,42 +7,76 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<p>Look up any info you want! :)</p>
-@*<select id="searchBy">
-    <option value="Name">Name</option>
-    <option value="GPS">GPS</option>
-    <option value="Datetime">Datetime</option>
-</select>
-<input class="" type="text" id="search" placeholder="Search" />
-<input type="button" id="queryBtn" class="btn btn-secondary query-button" value="Search" />*@
-<form asp-controller="Home" asp-action="Index">
-    <p>
-        Name: <input type="text" name="SearchString" />
-        <input type="submit" value="Query" />
-    </p>
-</form>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Query Parameters</legend>
+        <div>
+            <input id="btnAddQuery" type="button"
+                   onclick="addRow();" value="Add Query" />
+        </div>
+        <table>
+            <thead>
+            <tr>
+                <td>
+                    Key
+                </td>
+                <td>
+                    Value
+                </td>
+            </tr>
+            </thead>
+            <tbody id="tbQueries">
+            </tbody>
+        </table>
+        <p>
+            <input type="submit" value="Query" />
+        </p>
+    </fieldset>
+}
+
+<script language="javascript" type="text/javascript">
+    function addRow() {
+        var index = $("#tbQueries").children("tr").length;
+
+        var indexCell = "<td style='display:none'><input name='Index' type='hidden' value='" + index + "' /></td>";
+        var titleCell = "<td><input id='Queries_" + index + "__Title' name='[" + index + "].Key' type='text' value='' /></td>";
+        var publishedCell = "<td><input id='Queries_" + index + "__Title' name='[" + index + "].Value' type='text' value='' /></td>";
+        var removeCell = "<td><input id='btnAddQuery' type='button' value='Remove' onclick='removeRow(" + index + ");' /></td>";
+
+        var newRow = "<tr id='trQuery" + index + "'>" + 
+            indexCell + titleCell + publishedCell + removeCell + "</tr>";
+        $("#tbQueries").append(newRow);
+    }
+
+    function removeRow(id) {
+        var controlToBeRemoved = "#trQuery" + id;
+        $(controlToBeRemoved).remove();
+    }
+</script>
 
 <table class="table table-striped" aria-labelledby="tabelLabel">
-    <thead>
-        <tr>
-            <th>User ID</th>
-            <th>Date</th>
-            <th>Additional Information</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var data in Model.table)
-        {
-            if (data != null)
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Date</th>
+                <th>Additional Information</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var data in Model.table)
             {
-                string s = string.Join("; ", data.otherinfo.Select(x => x.Key + ": " + x.Value).ToArray());
-                <tr>
-                    <td>@data.uid</td>
-                    <td>@data.date</td>
-                    <td>@s</td>
-                </tr>
+                if (data != null)
+                {
+                    string s = string.Join("; ", data.otherinfo.Select(x => x.Key + ": " + x.Value).ToArray());
+                    <tr>
+                        <td>@data.uid</td>
+                        <td>@data.date</td>
+                        <td>@s</td>
+                    </tr>
 
+                }
             }
-        }
-    </tbody>
-</table>
+        </tbody>
+    </table>

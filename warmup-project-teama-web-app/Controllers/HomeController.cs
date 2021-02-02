@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -21,43 +22,38 @@ namespace warmup_project_teama_web_app.Controllers
             _logger = logger;
         }
 
-        /*
-         * Initial view set-up
-         */
+        /// <summary>
+        /// Initial set-up of the view.
+        /// </summary>
+        /// <returns>View with empty table</returns>
         public IActionResult Index()
         {
-            // ALL HARD-CODED INFO
-            // PLEASE DELETE LATER
-            Dictionary<string, string> otherinfo1 = new Dictionary<string, string>();
-            otherinfo1.Add("height", "5.6");
-            otherinfo1.Add("weight", "134");
-
-            Dictionary<string, string> otherinfo2 = new Dictionary<string, string>();
-            otherinfo2.Add("favorite food", "pasta");
-
-            List<Entry> entries = new List<Entry>();
-            entries.Add(new Entry("userid0000", DateTime.Now, otherinfo1));
-            entries.Add(new Entry("userid2222", DateTime.UnixEpoch, otherinfo2));
-
-            return View(new TableViewModel(entries));
+            return View(new TableViewModel());
         }
 
-        /*
-         * Index view after an HTTP POST request.
-         * Takes in parameters from the view.
-         */
+        /// <summary>
+        /// Takes in query parameters and updates the table in the view
+        /// </summary>
+        /// <param name="dataList">A list of query parameters</param>
+        /// <returns>An updated view with a filled TableViewModel</returns>
         [HttpPost]
-        public IActionResult Index(string searchString, bool notUsed)
+        public IActionResult Index(ICollection<KVPair> dataList)
         {
-            // ALL HARD-CODED INFO
-            // PLEASE DELETE LATER
-            Dictionary<string, string> otherinfo1 = new Dictionary<string, string>();
-            otherinfo1.Add("eye color", "brown");
+            if (ModelState.IsValid && dataList.Count > 0)
+            {
+                // This is all dummy code to make sure that the controller
+                // successfully gets the data from the user-inputted query.
+                // Change this so that it goes through the cloud adapter.
+                List<Entry> dummyTable = new List<Entry>();
+                foreach (var pair in dataList)
+                {
+                    dummyTable.Add(new Entry(pair.Key + ": " + pair.Value, DateTime.Now, new Dictionary<string, string>()));
+                }
 
-            List<Entry> entries = new List<Entry>();
-            entries.Add(new Entry(searchString, DateTime.Now, otherinfo1));
+                return View(new TableViewModel(dummyTable));
 
-            return View(new TableViewModel(entries));
+            }
+            return View(new TableViewModel());
         }
 
         public IActionResult Privacy()

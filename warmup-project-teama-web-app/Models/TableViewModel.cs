@@ -9,9 +9,15 @@ namespace warmup_project_teama_web_app.Models
     {
         public List<Entry> table;
 
+        public TableViewModel()
+        {
+            table = new List<Entry>();
+        }
+
         public TableViewModel(List<Entry> table)
         {
             this.table = table;
         }
+
     }
 }
