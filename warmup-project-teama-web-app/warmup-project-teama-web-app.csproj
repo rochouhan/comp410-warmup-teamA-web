@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>warmup_project_teama_web_app</RootNamespace>
+    <StartupObject></StartupObject>
   </PropertyGroup>
 
   <ItemGroup>

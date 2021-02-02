@@ -22,21 +22,28 @@ namespace warmup_project_teama_web_app.Controllers
             _logger = logger;
         }
 
-        /// <summary>
-        /// Initial set-up of the view.
-        /// </summary>
-        /// <returns>View with empty table</returns>
+        /*
+         * Initial view set-up
+         */
         public IActionResult Index()
         {
             return View(new TableViewModel());
         }
 
-        /// <summary>
-        /// Takes in query parameters and updates the table in the view
-        /// </summary>
-        /// <param name="dataList">A list of query parameters</param>
-        /// <returns>An updated view with a filled TableViewModel</returns>
+        /*
+         * Index view after an HTTP POST request.
+         * Takes in parameters from the view.
+         */
         [HttpPost]
+        public IActionResult Index(string searchString, bool notUsed)
+        {
+            TableViewModel entries = cloudAdapter.execute(searchString);
+            if (entries == null)
+            {
+                //TODO: Maybe this isn't the cleanest way to handle the error case
+                return View(new TableViewModel(new List<Entry>()));
+            }
+            return View(entries);
         public IActionResult Index(ICollection<KVPair> dataList)
         {
             if (ModelState.IsValid && dataList.Count > 0)
