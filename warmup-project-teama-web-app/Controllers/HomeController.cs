@@ -47,12 +47,12 @@ namespace warmup_project_teama_web_app.Controllers
             {
                 return RedirectToAction("Index", "Login");
             }
+            ViewData["userID"] = user.userID;
             if (ModelState.IsValid && dataList.Count > 0)
             {
                 TableViewModel entries = cloudAdapter.Execute(user.userID, dataList).Result;
                 return View(entries);
             }
-            ViewData["userID"] = user.userID;
             return View(new TableViewModel());
         }
 
