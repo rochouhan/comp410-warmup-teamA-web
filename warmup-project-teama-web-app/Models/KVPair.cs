@@ -14,7 +14,7 @@ namespace warmup_project_teama_web_app.Models
         
         public override string ToString()
         {
-            return Key + ": " + Value;
+            return Key + " " + Op + " " + Value;
         }
     }
 }
