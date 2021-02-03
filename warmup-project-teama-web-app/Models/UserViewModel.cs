@@ -7,6 +7,6 @@ namespace warmup_project_teama_web_app.Models
 {
     public class UserViewModel
     {
-        public string user_id { get; set; }
+        public string userID { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
         /// </summary>
         /// <param name="queryParams">A series of params that will be used to query the database</param>
         /// <returns>A response from API that has been transformed into a TableViewModel object.</returns>
-        Task<TableViewModel> Execute(ICollection<KVPair> queryParams);
+        Task<TableViewModel> Execute(string userID, ICollection<KVPair> queryParams);
 
         /// <summary>
         /// Authenticate application with API.

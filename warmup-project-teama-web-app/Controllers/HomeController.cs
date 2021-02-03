@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using warmup_project_teama_web_app.Controllers.Adapters;
 using warmup_project_teama_web_app.Models;
+using warmup_project_teama_web_app.Models.Session;
 
 namespace warmup_project_teama_web_app.Controllers
 {
@@ -22,12 +23,14 @@ namespace warmup_project_teama_web_app.Controllers
             _logger = logger;
         }
 
-        /// <summary>
-        /// Initial set-up of the view.
-        /// </summary>
-        /// <returns>View with empty table</returns>
         public IActionResult Index()
         {
+            UserViewModel user = getUserFromSession();
+            if (user == default | user == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            ViewData["userID"] = user.userID;
             return View(new TableViewModel());
         }
 
@@ -39,33 +42,18 @@ namespace warmup_project_teama_web_app.Controllers
         [HttpPost]
         public IActionResult Index(ICollection<KVPair> dataList)
         {
+            UserViewModel user = getUserFromSession();
+            if (user == default | user == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             if (ModelState.IsValid && dataList.Count > 0)
             {
-                TableViewModel entries = cloudAdapter.Execute(dataList).Result;
+                TableViewModel entries = cloudAdapter.Execute(user.userID, dataList).Result;
                 return View(entries);
             }
+            ViewData["userID"] = user.userID;
             return View(new TableViewModel());
-        }
-
-        // Might need to move this to another controller?
-        public IActionResult Login()
-        {
-            return View("Views/Auth/Login.cshtml");
-        }
-
-        [HttpPost]
-        public IActionResult Login(UserViewModel user)
-        {
-            if (ModelState.IsValid && user.user_id != null)
-            {
-                bool isValid = cloudAdapter.Authenticate(user.user_id).Result;
-                // Console.WriteLine(user.user_id);
-                if (isValid)
-                {
-                    return View("Views/Home/Index.cshtml", new TableViewModel());
-                }
-            }
-            return View("Views/Auth/Login.cshtml", user);
         }
 
         public IActionResult Privacy()
@@ -77,6 +65,11 @@ namespace warmup_project_teama_web_app.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        private UserViewModel getUserFromSession()
+        {
+            return HttpContext.Session.Get<UserViewModel>("user");
         }
     }
 }

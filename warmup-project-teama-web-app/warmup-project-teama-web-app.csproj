@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Folder Include="Controllers\Adapters\" />
+    <Folder Include="Models\Session\" />
   </ItemGroup>
 
   <ItemGroup>

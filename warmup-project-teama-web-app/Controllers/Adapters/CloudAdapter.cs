@@ -10,6 +10,7 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
 {
     public class CloudAdapter : ICloudAdapter
     {
+
         static readonly HttpClient client = new HttpClient();
 
         public CloudAdapter()
@@ -43,7 +44,7 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
             return false; // else case
         }
 
-        public async Task<TableViewModel> Execute(ICollection<KVPair> queryParams)
+        public async Task<TableViewModel> Execute(string userID, ICollection<KVPair> queryParams)
         {
             //foreach (KVPair kvpair in queryParams)
             //{
@@ -58,8 +59,7 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
             string chars = firstKVPair.Key;
             string op = firstKVPair.Op;
             string val = firstKVPair.Value;
-            string user_id = "test"; // TODO: get actual user id
-            string requestString = "https://my-resource.azure-api.net/api/read?user_id=" + user_id + "&characteristic=" + chars + "&operator=" + op + "&value=" + val;
+            string requestString = "https://my-resource.azure-api.net/api/read?user_id=" + userID + "&characteristic=" + chars + "&operator=" + op + "&value=" + val;
 
             System.Diagnostics.Debug.WriteLine(requestString);
 
