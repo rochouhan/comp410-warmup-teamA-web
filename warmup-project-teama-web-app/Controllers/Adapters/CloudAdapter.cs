@@ -56,7 +56,7 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
             KVPair firstKVPair = queryParamsList[0];
 
             string chars = firstKVPair.Key;
-            string op = "eq"; // TODO: change to firstKVPair.Op
+            string op = firstKVPair.Op;
             string val = firstKVPair.Value;
             string user_id = "test"; // TODO: get actual user id
             string requestString = "https://my-resource.azure-api.net/api/read?user_id=" + user_id + "&characteristic=" + chars + "&operator=" + op + "&value=" + val;
