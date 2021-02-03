@@ -56,9 +56,10 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
             KVPair firstKVPair = queryParamsList[0];
 
             string chars = firstKVPair.Key;
-            string op = "eq";
+            string op = "eq"; // TODO: change to firstKVPair.Op
             string val = firstKVPair.Value;
-            string requestString = "https://my-resource.azure-api.net/api/read?characteristic=" + chars + "&operator=" + op + "&value=" + val;
+            string user_id = "test"; // TODO: get actual user id
+            string requestString = "https://my-resource.azure-api.net/api/read?user_id=" + user_id + "&characteristic=" + chars + "&operator=" + op + "&value=" + val;
 
             System.Diagnostics.Debug.WriteLine(requestString);
 
@@ -97,20 +98,9 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
 
             foreach (RootStructure item in json)
             {
-                // TODO: modify when we get final date time format from API group
-                string pattern = "MMMM dd h:mmtt";
-                DateTime parsedDate;
-                string newDateTime = item.time.Substring(0, item.time.Length - 4);
-
-                if (DateTime.TryParseExact(newDateTime, pattern, null, DateTimeStyles.None, out parsedDate))
-                {
-                    Entry entry = new Entry(item.user_id, parsedDate, ToDictionary(item.other_info));
-                    entries.Add(entry);
-                }
-                else
-                {
-                    System.Diagnostics.Debug.WriteLine("Unable to convert '{0}' to a date and time.", newDateTime);
-                }
+                DateTime date = new DateTime(1000 * item.time);
+                Entry entry = new Entry(item.user_id, item.latitude, item.longitude, date, ToDictionary(item.other_info));
+                entries.Add(entry);
             }
 
             return new TableViewModel(entries);
