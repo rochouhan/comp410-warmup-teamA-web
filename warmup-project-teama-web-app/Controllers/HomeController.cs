@@ -56,6 +56,15 @@ namespace warmup_project_teama_web_app.Controllers
         [HttpPost]
         public IActionResult Login(UserViewModel user)
         {
+            if (ModelState.IsValid && user.user_id != null)
+            {
+                bool isValid = cloudAdapter.Authenticate(user.user_id).Result;
+                // Console.WriteLine(user.user_id);
+                if (isValid)
+                {
+                    return View("Views/Home/Index.cshtml", new TableViewModel());
+                }
+            }
             return View("Views/Auth/Login.cshtml", user);
         }
 
