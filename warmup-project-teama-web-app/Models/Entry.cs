@@ -24,6 +24,8 @@ namespace warmup_project_teama_web_app.Models
         {
             this.uid = uid;
             this.date = date;
+            this.latitude = latitude;
+            this.longitude = longitude;
             this.otherinfo = otherinfo;
         }
 
