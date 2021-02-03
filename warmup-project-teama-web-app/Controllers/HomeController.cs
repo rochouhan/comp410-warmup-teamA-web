@@ -47,6 +47,18 @@ namespace warmup_project_teama_web_app.Controllers
             return View(new TableViewModel());
         }
 
+        // Might need to move this to another controller?
+        public IActionResult Login()
+        {
+            return View("Views/Auth/Login.cshtml");
+        }
+
+        [HttpPost]
+        public IActionResult Login(UserViewModel user)
+        {
+            return View("Views/Auth/Login.cshtml", user);
+        }
+
         public IActionResult Privacy()
         {
             return View();
