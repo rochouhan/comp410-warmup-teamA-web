@@ -9,6 +9,7 @@ namespace warmup_project_teama_web_app.Models
     {
         public string Key { get; set; }
         public string Value { get; set; }
+        public string Op { get; set; }
 
         
         public override string ToString()
