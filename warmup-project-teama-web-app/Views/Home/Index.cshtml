@@ -33,19 +33,22 @@
         </p>
     </fieldset>
 }
+<input type="hidden" id="totalQueries" value="0" />
 
 <script language="javascript" type="text/javascript">
     function addRow() {
-        var index = $("#tbQueries").children("tr").length;
+        var tq = parseInt($("#totalQueries").val());
+        tq = tq + 1;
+        $("#totalQueries").val(tq);
 
-        var indexCell = "<td style='display:none'><input name='Index' type='hidden' value='" + index + "' /></td>";
-        var keyCell = "<td><input id='Queries_" + index + "__Title' name='[" + index + "].Key' type='text' value='' /></td>";
-        var opCell = "<td><select id='Queries_" + index + "_Title' name='[" + index + "].Op'>" +
+        var indexCell = "<td style='display:none'><input name='dataList.Index' type='hidden' value='" + tq + "' /></td>";
+        var keyCell = "<td><input id='Queries_" + tq + "__Title' name='dataList[" + tq + "].Key' type='text' value='' /></td>";
+        var opCell = "<td><select id='Queries_" + tq + "_Title' name='dataList[" + tq + "].Op'>" +
             "<option value='eq'>=</option><option value='lt'><</option><option value='gt'>></option></select>";
-        var valueCell = "<td><input id='Queries_" + index + "__Title' name='[" + index + "].Value' type='text' value='' /></td>";
-        var removeCell = "<td><input id='btnAddQuery' type='button' value='Remove' onclick='removeRow(" + index + ");' /></td>";
+        var valueCell = "<td><input id='Queries_" + tq + "__Title' name='dataList[" + tq + "].Value' type='text' value='' /></td>";
+        var removeCell = "<td><input id='btnAddQuery' type='button' value='Remove' onclick='removeRow(" + tq + ");' /></td>";
 
-        var newRow = "<tr id='trQuery" + index + "'>" + 
+        var newRow = "<tr id='trQuery" + tq + "'>" + 
             indexCell + keyCell + opCell + valueCell + removeCell + "</tr>";
         $("#tbQueries").append(newRow);
     }
