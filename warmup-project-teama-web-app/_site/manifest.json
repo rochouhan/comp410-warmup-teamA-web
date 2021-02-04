@@ -1,0 +1,330 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Users/goonl/Desktop/RICE/Sen/4.2/COMP 410/comp410-warmup-teamA-web/warmup-project-teama-web-app",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "3yvwgjoD9C8kygM7UGwc9A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "IW1SWjTLwP5ZwIcY5guHQA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/warmup_project_teama_web_app.Controllers.Adapters.CloudAdapter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/warmup_project_teama_web_app.Controllers.Adapters.CloudAdapter.html",
+          "hash": "M9BVj6w+XzgK7jsKif/iKg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.html",
+          "hash": "BC7EfGtK2vpMhoEwdH5MMA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/warmup_project_teama_web_app.Controllers.Adapters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/warmup_project_teama_web_app.Controllers.Adapters.html",
+          "hash": "yjTA5XxQsY8MMJ3zBUhDQg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/warmup_project_teama_web_app.Controllers.HomeController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/warmup_project_teama_web_app.Controllers.HomeController.html",
+          "hash": "NgRz7dhsfT69fXgn2+ojig=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/warmup_project_teama_web_app.Controllers.LoginController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/warmup_project_teama_web_app.Controllers.LoginController.html",
+          "hash": "pgEslQ2mlZqJNFK+EngeJw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/warmup_project_teama_web_app.Controllers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/warmup_project_teama_web_app.Controllers.html",
+          "hash": "o3bijjTpkUAScE8QiFomXQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/warmup_project_teama_web_app.Models.Entry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/warmup_project_teama_web_app.Models.Entry.html",
+          "hash": "I7HyIa+OgpftUsPXHtS/mQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/warmup_project_teama_web_app.Models.ErrorViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/warmup_project_teama_web_app.Models.ErrorViewModel.html",
+          "hash": "7JZyExIflMkR/h7cWLOKPQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/warmup_project_teama_web_app.Models.KVPair.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/warmup_project_teama_web_app.Models.KVPair.html",
+          "hash": "oUfwzjGGKHrdK4s9Y4+hVw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/warmup_project_teama_web_app.Models.Session.SessionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/warmup_project_teama_web_app.Models.Session.SessionExtensions.html",
+          "hash": "GtchtbvlWupEVXzZhHoa0w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/warmup_project_teama_web_app.Models.Session.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/warmup_project_teama_web_app.Models.Session.html",
+          "hash": "o1ap2qxgtoEQWgb5xO3heQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/warmup_project_teama_web_app.Models.TableViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/warmup_project_teama_web_app.Models.TableViewModel.html",
+          "hash": "TY+RbqFMsFPb8x+bo3S1BQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/warmup_project_teama_web_app.Models.UserViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/warmup_project_teama_web_app.Models.UserViewModel.html",
+          "hash": "wVwFUYq+lxbfqVcdKX26gA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/warmup_project_teama_web_app.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/warmup_project_teama_web_app.Models.html",
+          "hash": "nETJMOfd7/GLbWbKaR57gw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/warmup_project_teama_web_app.Program.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/warmup_project_teama_web_app.Program.html",
+          "hash": "rT/IinEzcbGkYNYSUOzqjA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/warmup_project_teama_web_app.Startup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/warmup_project_teama_web_app.Startup.html",
+          "hash": "w2uJ8+IYSqeiPu/0bjWGIA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/warmup_project_teama_web_app.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/warmup_project_teama_web_app.html",
+          "hash": "qcj9aqvfEz8QOmvkMnnpdw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "QyO/bSIsogiGrPwYvLUM7Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "gB8AESyvNru97tzIZofEEg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "vGkOa2RUPxQeGYXtwuyv5Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "+rHUkRZHZRi5gd1aTU6lJA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 3
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 17,
+          "skipped_file_count": 17
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
