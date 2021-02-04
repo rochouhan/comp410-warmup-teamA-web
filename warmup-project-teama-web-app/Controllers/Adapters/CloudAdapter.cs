@@ -79,13 +79,12 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
                     response.EnsureSuccessStatusCode();
                     string responseBody = await response.Content.ReadAsStringAsync();
 
+                    System.Diagnostics.Debug.WriteLine("RESPONSE===================================================");
                     System.Diagnostics.Debug.WriteLine(response);
-                    System.Diagnostics.Debug.WriteLine("here yes!");
+                    System.Diagnostics.Debug.WriteLine("RESPONSE BODY==============================================");
                     System.Diagnostics.Debug.WriteLine(responseBody);
 
                     List<RootStructure> jsonResponse = JsonConvert.DeserializeObject<List<RootStructure>>(responseBody);
-                    System.Diagnostics.Debug.WriteLine(responseBody);
-                    System.Diagnostics.Debug.WriteLine(jsonResponse);
 
                     return ToViewModel(jsonResponse);
                 }
@@ -99,15 +98,28 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
             return new TableViewModel();
         }
 
+
         public TableViewModel ToViewModel(List<RootStructure> json)
         {
+            // list of entries for the ViewModel
             List<Entry> entries = new List<Entry>();
 
             foreach (RootStructure item in json)
             {
+                // converting milliseconds into DateTime
                 DateTime date = new DateTime(1000 * item.time);
-                Entry entry = new Entry(item.user_id, item.latitude, item.longitude, date, ToDictionary(item.other_info));
+
+                // empty dictionary for otherInfo in the event that item.otherInfo is null
+                Dictionary<string, string> otherInfoDict = new Dictionary<string, string>();
+                
+                if (item.other_info != null)
+                {
+                    otherInfoDict = ToDictionary(item.other_info);
+                } 
+
+                Entry entry = new Entry(item.user_id, item.latitude, item.longitude, date, otherInfoDict);
                 entries.Add(entry);
+
             }
 
             return new TableViewModel(entries);
