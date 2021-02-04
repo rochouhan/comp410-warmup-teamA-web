@@ -14,13 +14,11 @@ namespace warmup_project_teama_web_app.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
         private ICloudAdapter cloudAdapter = new CloudAdapter();
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController()
         {
-            _logger = logger;
         }
 
         public IActionResult Index()

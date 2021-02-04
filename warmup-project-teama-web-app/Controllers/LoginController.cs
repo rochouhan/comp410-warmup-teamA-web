@@ -14,12 +14,12 @@ namespace warmup_project_teama_web_app.Controllers
     public class LoginController : Controller
     {
         // Should we make a singleton of this? 
-        private ICloudAdapter cloudAdapter = new CloudAdapter();
+        public ICloudAdapter cloudAdapter = new CloudAdapter();
 
         // GET: /<controller>/
         public IActionResult Index()
         {
-            return View();
+            return View("Index");
         }
 
         [HttpPost]
