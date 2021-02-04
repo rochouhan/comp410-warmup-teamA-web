@@ -25,7 +25,7 @@ namespace Tests
            
             // create the mock http context
             var controller = new LoginController();
-            var userViewModel = new UserViewModel(null);
+            var userViewModel = new UserViewModel();
             var result = controller.Index(userViewModel) as ViewResult;
             Assert.Equal("Index", result.ViewName);
         }
