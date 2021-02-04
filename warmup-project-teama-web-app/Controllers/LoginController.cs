@@ -28,7 +28,6 @@ namespace warmup_project_teama_web_app.Controllers
             if (ModelState.IsValid && user.userID != null)
             {
                 bool isValid = cloudAdapter.Authenticate(user.userID).Result;
-                Console.WriteLine(user.userID);
                 if (isValid)
                 {
                     HttpContext.Session.Set<UserViewModel>("user", user);

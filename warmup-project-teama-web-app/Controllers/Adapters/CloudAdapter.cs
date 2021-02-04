@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Globalization;
+using System.Text;
 
 namespace warmup_project_teama_web_app.Controllers.Adapters
 {
@@ -22,16 +23,19 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
             try
             {
                 using (var requestMessage =
-                    new HttpRequestMessage(HttpMethod.Post, "https://my-resource.azure-api.net/api/auth?user_id=" + user_id))
+                    new HttpRequestMessage(HttpMethod.Post, "https://my-resource.azure-api.net/v3/api/AuthHttpTrigger"))
                 {
-                    requestMessage.Headers.Add("Ocp-Apim-Subscription-Key", "83a2f1db11ec471ebf824546a59cfef0");
+                    // user_id included in body
+                    requestMessage.Content = new StringContent(
+                        JsonConvert.SerializeObject(new { user_id }),
+                        Encoding.UTF8, "application/json");
+
                     HttpResponseMessage response = await client.SendAsync(requestMessage);
                     response.EnsureSuccessStatusCode();
                     string responseBody = await response.Content.ReadAsStringAsync();
 
                     AuthStructure jsonResponse = JsonConvert.DeserializeObject<AuthStructure>(responseBody);
-                    System.Diagnostics.Debug.WriteLine(jsonResponse);
-
+                    System.Diagnostics.Debug.WriteLine(responseBody);
                     return jsonResponse.success;
                 }
             }
@@ -59,8 +63,10 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
             string chars = firstKVPair.Key;
             string op = firstKVPair.Op;
             string val = firstKVPair.Value;
-            string requestString = "https://my-resource.azure-api.net/api/read?user_id=" + userID + "&characteristic=" + chars + "&operator=" + op + "&value=" + val;
+            //string requestString = "https://my-resource.azure-api.net/api/read?user_id=" + userID + "&characteristic=" + chars + "&operator=" + op + "&value=" + val;
 
+            // current version of the API endpoint for now
+            string requestString = "https://my-resource.azure-api.net/v3/api/ReadFunction?" + chars + "=" + val;
             System.Diagnostics.Debug.WriteLine(requestString);
 
             try
@@ -78,6 +84,7 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
                     System.Diagnostics.Debug.WriteLine(responseBody);
 
                     List<RootStructure> jsonResponse = JsonConvert.DeserializeObject<List<RootStructure>>(responseBody);
+                    System.Diagnostics.Debug.WriteLine(responseBody);
                     System.Diagnostics.Debug.WriteLine(jsonResponse);
 
                     return ToViewModel(jsonResponse);
