@@ -64,8 +64,7 @@
             <tr>
                 <th>User ID</th>
                 <th>Date</th>
-                <th>Latitude</th>
-                <th>Longitude</th>
+                <th>Location</th>
                 <th>Additional Information</th>
             </tr>
         </thead>
@@ -74,13 +73,16 @@
             {
                 if (data != null)
                 {
-                    string s = string.Join("; ", data.otherinfo.Select(x => x.Key + ": " + x.Value).ToArray());
+                    string otherInfo = "";
+                    foreach (var pair in data.otherinfo)
+                    {
+                        otherInfo += pair.Key + ": " + pair.Value + "\n";
+                    }
                     <tr>
                         <td>@data.uid</td>
                         <td>@data.date</td>
-                        <td>@data.latitude</td>
-                        <td>@data.longitude</td>
-                        <td>@s</td>
+                        <td>(@data.latitude, @data.longitude)</td>
+                        <td>@otherInfo</td>
                     </tr>
 
                 }

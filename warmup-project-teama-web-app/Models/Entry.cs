@@ -13,13 +13,6 @@ namespace warmup_project_teama_web_app.Models
         public DateTime date;
         public Dictionary<string, string> otherinfo;
 
-        public Entry(string uid, DateTime date, Dictionary<string, string> otherinfo)
-        {
-            this.uid = uid;
-            this.date = date;
-            this.otherinfo = otherinfo;
-        }
-
         public Entry(string uid, double latitude, double longitude, DateTime date, Dictionary<string, string> otherinfo)
         {
             this.uid = uid;
