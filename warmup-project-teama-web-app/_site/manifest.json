@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "C:/Users/goonl/Desktop/RICE/Sen/4.2/COMP 410/comp410-warmup-teamA-web/warmup-project-teama-web-app",
+  "source_base_path": "C:/Users/rhain/OneDrive/Documents/College Stuff/Spring 2021/COMP 410/Warmup-Web/warmup-project-teama-web-app",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -105,7 +105,7 @@
       "output": {
         ".html": {
           "relative_path": "api/warmup_project_teama_web_app.Models.Entry.html",
-          "hash": "I7HyIa+OgpftUsPXHtS/mQ=="
+          "hash": "ge0oxc0FrQLPuj/JrdzdXQ=="
         }
       },
       "is_incremental": true,

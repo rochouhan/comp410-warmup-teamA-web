@@ -296,15 +296,6 @@ references:
   commentId: T:warmup_project_teama_web_app.Models.Entry
   fullName: warmup_project_teama_web_app.Models.Entry
   nameWithType: Entry
-- uid: warmup_project_teama_web_app.Models.Entry.#ctor(System.String,System.DateTime,System.Collections.Generic.Dictionary{System.String,System.String})
-  name: Entry(String, DateTime, Dictionary<String, String>)
-  href: api/warmup_project_teama_web_app.Models.Entry.html#warmup_project_teama_web_app_Models_Entry__ctor_System_String_System_DateTime_System_Collections_Generic_Dictionary_System_String_System_String__
-  commentId: M:warmup_project_teama_web_app.Models.Entry.#ctor(System.String,System.DateTime,System.Collections.Generic.Dictionary{System.String,System.String})
-  name.vb: Entry(String, DateTime, Dictionary(Of String, String))
-  fullName: warmup_project_teama_web_app.Models.Entry.Entry(System.String, System.DateTime, System.Collections.Generic.Dictionary<System.String, System.String>)
-  fullName.vb: warmup_project_teama_web_app.Models.Entry.Entry(System.String, System.DateTime, System.Collections.Generic.Dictionary(Of System.String, System.String))
-  nameWithType: Entry.Entry(String, DateTime, Dictionary<String, String>)
-  nameWithType.vb: Entry.Entry(String, DateTime, Dictionary(Of String, String))
 - uid: warmup_project_teama_web_app.Models.Entry.#ctor(System.String,System.Double,System.Double,System.DateTime,System.Collections.Generic.Dictionary{System.String,System.String})
   name: Entry(String, Double, Double, DateTime, Dictionary<String, String>)
   href: api/warmup_project_teama_web_app.Models.Entry.html#warmup_project_teama_web_app_Models_Entry__ctor_System_String_System_Double_System_Double_System_DateTime_System_Collections_Generic_Dictionary_System_String_System_String__

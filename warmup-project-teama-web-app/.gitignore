@@ -1,0 +1,18 @@
+###############
+#    folder   #
+###############
+/**/DROP/
+/**/TEMP/
+/**/packages/
+/**/bin/
+/**/obj/
+_site
+
+
+# auto-generated files from code doc   
+/api/**
+/articles/**
+docfx.json
+index.md
+log.txt
+toc.yml
