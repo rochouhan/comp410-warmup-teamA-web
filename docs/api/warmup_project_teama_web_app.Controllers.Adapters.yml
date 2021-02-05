@@ -1,0 +1,34 @@
+### YamlMime:ManagedReference
+items:
+- uid: warmup_project_teama_web_app.Controllers.Adapters
+  commentId: N:warmup_project_teama_web_app.Controllers.Adapters
+  id: warmup_project_teama_web_app.Controllers.Adapters
+  children:
+  - warmup_project_teama_web_app.Controllers.Adapters.CloudAdapter
+  - warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter
+  langs:
+  - csharp
+  - vb
+  name: warmup_project_teama_web_app.Controllers.Adapters
+  nameWithType: warmup_project_teama_web_app.Controllers.Adapters
+  fullName: warmup_project_teama_web_app.Controllers.Adapters
+  type: Namespace
+  assemblies:
+  - warmup-project-teama-web-app
+references:
+- uid: warmup_project_teama_web_app.Controllers.Adapters.CloudAdapter
+  commentId: T:warmup_project_teama_web_app.Controllers.Adapters.CloudAdapter
+  name: CloudAdapter
+  nameWithType: CloudAdapter
+  fullName: warmup_project_teama_web_app.Controllers.Adapters.CloudAdapter
+- uid: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter
+  commentId: T:warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter
+  parent: warmup_project_teama_web_app.Controllers.Adapters
+  name: ICloudAdapter
+  nameWithType: ICloudAdapter
+  fullName: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter
+- uid: warmup_project_teama_web_app.Controllers.Adapters
+  commentId: N:warmup_project_teama_web_app.Controllers.Adapters
+  name: warmup_project_teama_web_app.Controllers.Adapters
+  nameWithType: warmup_project_teama_web_app.Controllers.Adapters
+  fullName: warmup_project_teama_web_app.Controllers.Adapters

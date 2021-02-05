@@ -1,0 +1,22 @@
+### YamlMime:ManagedReference
+items:
+- uid: warmup_project_teama_web_app.Models.Session
+  commentId: N:warmup_project_teama_web_app.Models.Session
+  id: warmup_project_teama_web_app.Models.Session
+  children:
+  - warmup_project_teama_web_app.Models.Session.SessionExtensions
+  langs:
+  - csharp
+  - vb
+  name: warmup_project_teama_web_app.Models.Session
+  nameWithType: warmup_project_teama_web_app.Models.Session
+  fullName: warmup_project_teama_web_app.Models.Session
+  type: Namespace
+  assemblies:
+  - warmup-project-teama-web-app
+references:
+- uid: warmup_project_teama_web_app.Models.Session.SessionExtensions
+  commentId: T:warmup_project_teama_web_app.Models.Session.SessionExtensions
+  name: SessionExtensions
+  nameWithType: SessionExtensions
+  fullName: warmup_project_teama_web_app.Models.Session.SessionExtensions

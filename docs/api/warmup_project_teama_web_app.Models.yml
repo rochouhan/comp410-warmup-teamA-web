@@ -1,0 +1,53 @@
+### YamlMime:ManagedReference
+items:
+- uid: warmup_project_teama_web_app.Models
+  commentId: N:warmup_project_teama_web_app.Models
+  id: warmup_project_teama_web_app.Models
+  children:
+  - warmup_project_teama_web_app.Models.Entry
+  - warmup_project_teama_web_app.Models.ErrorViewModel
+  - warmup_project_teama_web_app.Models.KVPair
+  - warmup_project_teama_web_app.Models.TableViewModel
+  - warmup_project_teama_web_app.Models.UserViewModel
+  langs:
+  - csharp
+  - vb
+  name: warmup_project_teama_web_app.Models
+  nameWithType: warmup_project_teama_web_app.Models
+  fullName: warmup_project_teama_web_app.Models
+  type: Namespace
+  assemblies:
+  - warmup-project-teama-web-app
+references:
+- uid: warmup_project_teama_web_app.Models.Entry
+  commentId: T:warmup_project_teama_web_app.Models.Entry
+  name: Entry
+  nameWithType: Entry
+  fullName: warmup_project_teama_web_app.Models.Entry
+- uid: warmup_project_teama_web_app.Models.ErrorViewModel
+  commentId: T:warmup_project_teama_web_app.Models.ErrorViewModel
+  name: ErrorViewModel
+  nameWithType: ErrorViewModel
+  fullName: warmup_project_teama_web_app.Models.ErrorViewModel
+- uid: warmup_project_teama_web_app.Models.KVPair
+  commentId: T:warmup_project_teama_web_app.Models.KVPair
+  name: KVPair
+  nameWithType: KVPair
+  fullName: warmup_project_teama_web_app.Models.KVPair
+- uid: warmup_project_teama_web_app.Models.TableViewModel
+  commentId: T:warmup_project_teama_web_app.Models.TableViewModel
+  parent: warmup_project_teama_web_app.Models
+  name: TableViewModel
+  nameWithType: TableViewModel
+  fullName: warmup_project_teama_web_app.Models.TableViewModel
+- uid: warmup_project_teama_web_app.Models.UserViewModel
+  commentId: T:warmup_project_teama_web_app.Models.UserViewModel
+  parent: warmup_project_teama_web_app.Models
+  name: UserViewModel
+  nameWithType: UserViewModel
+  fullName: warmup_project_teama_web_app.Models.UserViewModel
+- uid: warmup_project_teama_web_app.Models
+  commentId: N:warmup_project_teama_web_app.Models
+  name: warmup_project_teama_web_app.Models
+  nameWithType: warmup_project_teama_web_app.Models
+  fullName: warmup_project_teama_web_app.Models

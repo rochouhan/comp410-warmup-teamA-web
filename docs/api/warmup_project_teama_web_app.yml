@@ -1,0 +1,28 @@
+### YamlMime:ManagedReference
+items:
+- uid: warmup_project_teama_web_app
+  commentId: N:warmup_project_teama_web_app
+  id: warmup_project_teama_web_app
+  children:
+  - warmup_project_teama_web_app.Program
+  - warmup_project_teama_web_app.Startup
+  langs:
+  - csharp
+  - vb
+  name: warmup_project_teama_web_app
+  nameWithType: warmup_project_teama_web_app
+  fullName: warmup_project_teama_web_app
+  type: Namespace
+  assemblies:
+  - warmup-project-teama-web-app
+references:
+- uid: warmup_project_teama_web_app.Program
+  commentId: T:warmup_project_teama_web_app.Program
+  name: Program
+  nameWithType: Program
+  fullName: warmup_project_teama_web_app.Program
+- uid: warmup_project_teama_web_app.Startup
+  commentId: T:warmup_project_teama_web_app.Startup
+  name: Startup
+  nameWithType: Startup
+  fullName: warmup_project_teama_web_app.Startup

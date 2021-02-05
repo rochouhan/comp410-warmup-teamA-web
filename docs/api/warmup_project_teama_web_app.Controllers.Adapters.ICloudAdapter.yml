@@ -1,0 +1,730 @@
+### YamlMime:ManagedReference
+items:
+- uid: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter
+  commentId: T:warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter
+  id: ICloudAdapter
+  parent: warmup_project_teama_web_app.Controllers.Adapters
+  children:
+  - warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.Authenticate(System.String)
+  - warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.Execute(System.String,System.Collections.Generic.ICollection{warmup_project_teama_web_app.Models.KVPair})
+  - warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.ToDictionary(System.Collections.Generic.List{OtherInfoStructure})
+  - warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.ToRequestFormat
+  - warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.ToViewModel(System.Collections.Generic.List{RootStructure})
+  langs:
+  - csharp
+  - vb
+  name: ICloudAdapter
+  nameWithType: ICloudAdapter
+  fullName: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter
+  type: Interface
+  source:
+    remote:
+      path: src/warmup-project-teama-web-app/Controllers/Adapters/ICloudAdapter.cs
+      branch: master
+      repo: https://github.com/rochouhan/comp410-warmup-teamA-web.git
+    id: ICloudAdapter
+    path: Controllers/Adapters/ICloudAdapter.cs
+    startLine: 10
+  assemblies:
+  - warmup-project-teama-web-app
+  namespace: warmup_project_teama_web_app.Controllers.Adapters
+  summary: "\nAn adapter that will be used to communicate between the web app and the external API.\n"
+  example: []
+  syntax:
+    content: public interface ICloudAdapter
+    content.vb: Public Interface ICloudAdapter
+  modifiers.csharp:
+  - public
+  - interface
+  modifiers.vb:
+  - Public
+  - Interface
+- uid: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.Execute(System.String,System.Collections.Generic.ICollection{warmup_project_teama_web_app.Models.KVPair})
+  commentId: M:warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.Execute(System.String,System.Collections.Generic.ICollection{warmup_project_teama_web_app.Models.KVPair})
+  id: Execute(System.String,System.Collections.Generic.ICollection{warmup_project_teama_web_app.Models.KVPair})
+  parent: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter
+  langs:
+  - csharp
+  - vb
+  name: Execute(String, ICollection<KVPair>)
+  nameWithType: ICloudAdapter.Execute(String, ICollection<KVPair>)
+  fullName: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.Execute(System.String, System.Collections.Generic.ICollection<warmup_project_teama_web_app.Models.KVPair>)
+  type: Method
+  source:
+    remote:
+      path: src/warmup-project-teama-web-app/Controllers/Adapters/ICloudAdapter.cs
+      branch: master
+      repo: https://github.com/rochouhan/comp410-warmup-teamA-web.git
+    id: Execute
+    path: Controllers/Adapters/ICloudAdapter.cs
+    startLine: 17
+  assemblies:
+  - warmup-project-teama-web-app
+  namespace: warmup_project_teama_web_app.Controllers.Adapters
+  summary: "\nExecutes the query by making a remote call to the API\n"
+  example: []
+  syntax:
+    content: Task<TableViewModel> Execute(string userID, ICollection<KVPair> queryParams)
+    parameters:
+    - id: userID
+      type: System.String
+    - id: queryParams
+      type: System.Collections.Generic.ICollection{warmup_project_teama_web_app.Models.KVPair}
+      description: A series of params that will be used to query the database
+    return:
+      type: System.Threading.Tasks.Task{warmup_project_teama_web_app.Models.TableViewModel}
+      description: A response from API that has been transformed into a TableViewModel object.
+    content.vb: Function Execute(userID As String, queryParams As ICollection(Of KVPair)) As Task(Of TableViewModel)
+  overload: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.Execute*
+  nameWithType.vb: ICloudAdapter.Execute(String, ICollection(Of KVPair))
+  fullName.vb: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.Execute(System.String, System.Collections.Generic.ICollection(Of warmup_project_teama_web_app.Models.KVPair))
+  name.vb: Execute(String, ICollection(Of KVPair))
+- uid: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.Authenticate(System.String)
+  commentId: M:warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.Authenticate(System.String)
+  id: Authenticate(System.String)
+  parent: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter
+  langs:
+  - csharp
+  - vb
+  name: Authenticate(String)
+  nameWithType: ICloudAdapter.Authenticate(String)
+  fullName: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.Authenticate(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/warmup-project-teama-web-app/Controllers/Adapters/ICloudAdapter.cs
+      branch: master
+      repo: https://github.com/rochouhan/comp410-warmup-teamA-web.git
+    id: Authenticate
+    path: Controllers/Adapters/ICloudAdapter.cs
+    startLine: 24
+  assemblies:
+  - warmup-project-teama-web-app
+  namespace: warmup_project_teama_web_app.Controllers.Adapters
+  summary: "\nAuthenticate application with API.\n"
+  example: []
+  syntax:
+    content: Task<bool> Authenticate(string authString)
+    parameters:
+    - id: authString
+      type: System.String
+      description: Auth to pass to API for authentication.
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: User ID to use for future API calls.
+    content.vb: Function Authenticate(authString As String) As Task(Of Boolean)
+  overload: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.Authenticate*
+- uid: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.ToViewModel(System.Collections.Generic.List{RootStructure})
+  commentId: M:warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.ToViewModel(System.Collections.Generic.List{RootStructure})
+  id: ToViewModel(System.Collections.Generic.List{RootStructure})
+  parent: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter
+  langs:
+  - csharp
+  - vb
+  name: ToViewModel(List<RootStructure>)
+  nameWithType: ICloudAdapter.ToViewModel(List<RootStructure>)
+  fullName: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.ToViewModel(System.Collections.Generic.List<RootStructure>)
+  type: Method
+  source:
+    remote:
+      path: src/warmup-project-teama-web-app/Controllers/Adapters/ICloudAdapter.cs
+      branch: master
+      repo: https://github.com/rochouhan/comp410-warmup-teamA-web.git
+    id: ToViewModel
+    path: Controllers/Adapters/ICloudAdapter.cs
+    startLine: 31
+  assemblies:
+  - warmup-project-teama-web-app
+  namespace: warmup_project_teama_web_app.Controllers.Adapters
+  summary: "\nConvert data from API to feed to ViewModel.\n"
+  example: []
+  syntax:
+    content: TableViewModel ToViewModel(List<RootStructure> json)
+    parameters:
+    - id: json
+      type: System.Collections.Generic.List{RootStructure}
+      description: JSON object received from API.
+    return:
+      type: warmup_project_teama_web_app.Models.TableViewModel
+      description: TableViewModel.
+    content.vb: Function ToViewModel(json As List(Of RootStructure)) As TableViewModel
+  overload: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.ToViewModel*
+  nameWithType.vb: ICloudAdapter.ToViewModel(List(Of RootStructure))
+  fullName.vb: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.ToViewModel(System.Collections.Generic.List(Of RootStructure))
+  name.vb: ToViewModel(List(Of RootStructure))
+- uid: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.ToRequestFormat
+  commentId: M:warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.ToRequestFormat
+  id: ToRequestFormat
+  parent: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter
+  langs:
+  - csharp
+  - vb
+  name: ToRequestFormat()
+  nameWithType: ICloudAdapter.ToRequestFormat()
+  fullName: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.ToRequestFormat()
+  type: Method
+  source:
+    remote:
+      path: src/warmup-project-teama-web-app/Controllers/Adapters/ICloudAdapter.cs
+      branch: master
+      repo: https://github.com/rochouhan/comp410-warmup-teamA-web.git
+    id: ToRequestFormat
+    path: Controllers/Adapters/ICloudAdapter.cs
+    startLine: 38
+  assemblies:
+  - warmup-project-teama-web-app
+  namespace: warmup_project_teama_web_app.Controllers.Adapters
+  summary: "\nConvert data from ViewModel to API.\n"
+  example: []
+  syntax:
+    content: string ToRequestFormat()
+    return:
+      type: System.String
+      description: String to format into HTTP request.
+    content.vb: Function ToRequestFormat As String
+  overload: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.ToRequestFormat*
+- uid: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.ToDictionary(System.Collections.Generic.List{OtherInfoStructure})
+  commentId: M:warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.ToDictionary(System.Collections.Generic.List{OtherInfoStructure})
+  id: ToDictionary(System.Collections.Generic.List{OtherInfoStructure})
+  parent: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter
+  langs:
+  - csharp
+  - vb
+  name: ToDictionary(List<OtherInfoStructure>)
+  nameWithType: ICloudAdapter.ToDictionary(List<OtherInfoStructure>)
+  fullName: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.ToDictionary(System.Collections.Generic.List<OtherInfoStructure>)
+  type: Method
+  source:
+    remote:
+      path: src/warmup-project-teama-web-app/Controllers/Adapters/ICloudAdapter.cs
+      branch: master
+      repo: https://github.com/rochouhan/comp410-warmup-teamA-web.git
+    id: ToDictionary
+    path: Controllers/Adapters/ICloudAdapter.cs
+    startLine: 45
+  assemblies:
+  - warmup-project-teama-web-app
+  namespace: warmup_project_teama_web_app.Controllers.Adapters
+  summary: "\nHelper function to convert data from list of OtherInfoStructure to Dictionary of string, string pairs.\n"
+  example: []
+  syntax:
+    content: Dictionary<string, string> ToDictionary(List<OtherInfoStructure> otherInfoList)
+    parameters:
+    - id: otherInfoList
+      type: System.Collections.Generic.List{OtherInfoStructure}
+      description: The list of OtherInfoStructure from the parsed JSON object
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: String to format into HTTP request.
+    content.vb: Function ToDictionary(otherInfoList As List(Of OtherInfoStructure)) As Dictionary(Of String, String)
+  overload: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.ToDictionary*
+  nameWithType.vb: ICloudAdapter.ToDictionary(List(Of OtherInfoStructure))
+  fullName.vb: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.ToDictionary(System.Collections.Generic.List(Of OtherInfoStructure))
+  name.vb: ToDictionary(List(Of OtherInfoStructure))
+references:
+- uid: warmup_project_teama_web_app.Controllers.Adapters
+  commentId: N:warmup_project_teama_web_app.Controllers.Adapters
+  name: warmup_project_teama_web_app.Controllers.Adapters
+  nameWithType: warmup_project_teama_web_app.Controllers.Adapters
+  fullName: warmup_project_teama_web_app.Controllers.Adapters
+- uid: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.Execute*
+  commentId: Overload:warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.Execute
+  name: Execute
+  nameWithType: ICloudAdapter.Execute
+  fullName: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.Execute
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Collections.Generic.ICollection{warmup_project_teama_web_app.Models.KVPair}
+  commentId: T:System.Collections.Generic.ICollection{warmup_project_teama_web_app.Models.KVPair}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.ICollection`1
+  name: ICollection<KVPair>
+  nameWithType: ICollection<KVPair>
+  fullName: System.Collections.Generic.ICollection<warmup_project_teama_web_app.Models.KVPair>
+  nameWithType.vb: ICollection(Of KVPair)
+  fullName.vb: System.Collections.Generic.ICollection(Of warmup_project_teama_web_app.Models.KVPair)
+  name.vb: ICollection(Of KVPair)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    nameWithType: ICollection
+    fullName: System.Collections.Generic.ICollection
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: warmup_project_teama_web_app.Models.KVPair
+    name: KVPair
+    nameWithType: KVPair
+    fullName: warmup_project_teama_web_app.Models.KVPair
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    nameWithType: ICollection
+    fullName: System.Collections.Generic.ICollection
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: warmup_project_teama_web_app.Models.KVPair
+    name: KVPair
+    nameWithType: KVPair
+    fullName: warmup_project_teama_web_app.Models.KVPair
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Threading.Tasks.Task{warmup_project_teama_web_app.Models.TableViewModel}
+  commentId: T:System.Threading.Tasks.Task{warmup_project_teama_web_app.Models.TableViewModel}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<TableViewModel>
+  nameWithType: Task<TableViewModel>
+  fullName: System.Threading.Tasks.Task<warmup_project_teama_web_app.Models.TableViewModel>
+  nameWithType.vb: Task(Of TableViewModel)
+  fullName.vb: System.Threading.Tasks.Task(Of warmup_project_teama_web_app.Models.TableViewModel)
+  name.vb: Task(Of TableViewModel)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: warmup_project_teama_web_app.Models.TableViewModel
+    name: TableViewModel
+    nameWithType: TableViewModel
+    fullName: warmup_project_teama_web_app.Models.TableViewModel
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: warmup_project_teama_web_app.Models.TableViewModel
+    name: TableViewModel
+    nameWithType: TableViewModel
+    fullName: warmup_project_teama_web_app.Models.TableViewModel
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Collections.Generic.ICollection`1
+  commentId: T:System.Collections.Generic.ICollection`1
+  isExternal: true
+  name: ICollection<T>
+  nameWithType: ICollection<T>
+  fullName: System.Collections.Generic.ICollection<T>
+  nameWithType.vb: ICollection(Of T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T)
+  name.vb: ICollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    nameWithType: ICollection
+    fullName: System.Collections.Generic.ICollection
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    nameWithType: ICollection
+    fullName: System.Collections.Generic.ICollection
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+- uid: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.Authenticate*
+  commentId: Overload:warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.Authenticate
+  name: Authenticate
+  nameWithType: ICloudAdapter.Authenticate
+  fullName: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.Authenticate
+- uid: System.Threading.Tasks.Task{System.Boolean}
+  commentId: T:System.Threading.Tasks.Task{System.Boolean}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<Boolean>
+  nameWithType: Task<Boolean>
+  fullName: System.Threading.Tasks.Task<System.Boolean>
+  nameWithType.vb: Task(Of Boolean)
+  fullName.vb: System.Threading.Tasks.Task(Of System.Boolean)
+  name.vb: Task(Of Boolean)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.ToViewModel*
+  commentId: Overload:warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.ToViewModel
+  name: ToViewModel
+  nameWithType: ICloudAdapter.ToViewModel
+  fullName: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.ToViewModel
+- uid: System.Collections.Generic.List{RootStructure}
+  commentId: T:System.Collections.Generic.List{RootStructure}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<RootStructure>
+  nameWithType: List<RootStructure>
+  fullName: System.Collections.Generic.List<RootStructure>
+  nameWithType.vb: List(Of RootStructure)
+  fullName.vb: System.Collections.Generic.List(Of RootStructure)
+  name.vb: List(Of RootStructure)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: RootStructure
+    name: RootStructure
+    nameWithType: RootStructure
+    fullName: RootStructure
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: RootStructure
+    name: RootStructure
+    nameWithType: RootStructure
+    fullName: RootStructure
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: warmup_project_teama_web_app.Models.TableViewModel
+  commentId: T:warmup_project_teama_web_app.Models.TableViewModel
+  parent: warmup_project_teama_web_app.Models
+  name: TableViewModel
+  nameWithType: TableViewModel
+  fullName: warmup_project_teama_web_app.Models.TableViewModel
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: warmup_project_teama_web_app.Models
+  commentId: N:warmup_project_teama_web_app.Models
+  name: warmup_project_teama_web_app.Models
+  nameWithType: warmup_project_teama_web_app.Models
+  fullName: warmup_project_teama_web_app.Models
+- uid: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.ToRequestFormat*
+  commentId: Overload:warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.ToRequestFormat
+  name: ToRequestFormat
+  nameWithType: ICloudAdapter.ToRequestFormat
+  fullName: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.ToRequestFormat
+- uid: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.ToDictionary*
+  commentId: Overload:warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.ToDictionary
+  name: ToDictionary
+  nameWithType: ICloudAdapter.ToDictionary
+  fullName: warmup_project_teama_web_app.Controllers.Adapters.ICloudAdapter.ToDictionary
+- uid: System.Collections.Generic.List{OtherInfoStructure}
+  commentId: T:System.Collections.Generic.List{OtherInfoStructure}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<OtherInfoStructure>
+  nameWithType: List<OtherInfoStructure>
+  fullName: System.Collections.Generic.List<OtherInfoStructure>
+  nameWithType.vb: List(Of OtherInfoStructure)
+  fullName.vb: System.Collections.Generic.List(Of OtherInfoStructure)
+  name.vb: List(Of OtherInfoStructure)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: OtherInfoStructure
+    name: OtherInfoStructure
+    nameWithType: OtherInfoStructure
+    fullName: OtherInfoStructure
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: OtherInfoStructure
+    name: OtherInfoStructure
+    nameWithType: OtherInfoStructure
+    fullName: OtherInfoStructure
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.Dictionary{System.String,System.String}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  name: Dictionary<String, String>
+  nameWithType: Dictionary<String, String>
+  fullName: System.Collections.Generic.Dictionary<System.String, System.String>
+  nameWithType.vb: Dictionary(Of String, String)
+  fullName.vb: System.Collections.Generic.Dictionary(Of System.String, System.String)
+  name.vb: Dictionary(Of String, String)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )

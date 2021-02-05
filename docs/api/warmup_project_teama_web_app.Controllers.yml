@@ -1,0 +1,28 @@
+### YamlMime:ManagedReference
+items:
+- uid: warmup_project_teama_web_app.Controllers
+  commentId: N:warmup_project_teama_web_app.Controllers
+  id: warmup_project_teama_web_app.Controllers
+  children:
+  - warmup_project_teama_web_app.Controllers.HomeController
+  - warmup_project_teama_web_app.Controllers.LoginController
+  langs:
+  - csharp
+  - vb
+  name: warmup_project_teama_web_app.Controllers
+  nameWithType: warmup_project_teama_web_app.Controllers
+  fullName: warmup_project_teama_web_app.Controllers
+  type: Namespace
+  assemblies:
+  - warmup-project-teama-web-app
+references:
+- uid: warmup_project_teama_web_app.Controllers.HomeController
+  commentId: T:warmup_project_teama_web_app.Controllers.HomeController
+  name: HomeController
+  nameWithType: HomeController
+  fullName: warmup_project_teama_web_app.Controllers.HomeController
+- uid: warmup_project_teama_web_app.Controllers.LoginController
+  commentId: T:warmup_project_teama_web_app.Controllers.LoginController
+  name: LoginController
+  nameWithType: LoginController
+  fullName: warmup_project_teama_web_app.Controllers.LoginController
