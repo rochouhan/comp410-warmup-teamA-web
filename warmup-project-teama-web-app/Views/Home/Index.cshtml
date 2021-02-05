@@ -69,13 +69,10 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var data in Model.table)
-            {
-                if (data != null)
-                {
+            @foreach (var data in Model.table) {
+                if (data != null) {
                     string otherInfo = "";
-                    foreach (var pair in data.otherinfo)
-                    {
+                    foreach (var pair in data.otherinfo) {
                         otherInfo += pair.Key + ": " + pair.Value + "\n";
                     }
                     <tr>
@@ -88,4 +85,4 @@
                 }
             }
         </tbody>
-    </table>
+</table>
