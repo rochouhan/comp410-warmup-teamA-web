@@ -8,7 +8,7 @@
 5. All matching records will be displayed on the same page
 
 ## Where can I find documentation?
-tbd, will be available soon
+Bare-bones tables of contents can be found at docs/_site/api/toc.html
 
 ## What do I need?
 On Visual Studio, go to Project > Manage NuGet Packages. Then search for "Newtonsoft.JSON" and install it.
