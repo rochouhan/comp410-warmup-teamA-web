@@ -15,14 +15,14 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
         /// </summary>
         /// <param name="queryParams">A series of params that will be used to query the database</param>
         /// <returns>A response from API that has been transformed into a TableViewModel object.</returns>
-        Task<TableViewModel> Execute(string userID, ICollection<KVPair> queryParams);
+        Task<TableViewModel> Execute(string userID, string authToken, ICollection<KVPair> queryParams);
 
         /// <summary>
         /// Authenticate application with API.
         /// </summary>
         /// <param name="authString">Auth to pass to API for authentication.</param>
         /// <returns>User ID to use for future API calls.</returns>
-        Task<bool> Authenticate(string authString);
+        Task<string> Authenticate(string authString);
 
         /// <summary>
         /// Convert data from API to feed to ViewModel.

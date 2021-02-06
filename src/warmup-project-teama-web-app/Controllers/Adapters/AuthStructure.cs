@@ -1,5 +1,9 @@
 ﻿public class AuthStructure
 {
-    public bool success { get; set; }
-    public string message { get; set; }
+    // previous structure
+    // public bool success { get; set; }
+    // public string message { get; set; }
+
+    // updated structure
+    public string token { get; set; }
 }

@@ -27,9 +27,10 @@ namespace warmup_project_teama_web_app.Controllers
         {
             if (ModelState.IsValid && user.userID != null)
             {
-                bool isValid = cloudAdapter.Authenticate(user.userID).Result;
-                if (isValid)
+                string authToken = cloudAdapter.Authenticate(user.userID).Result;
+                if (authToken != null)
                 {
+                    user.authToken = authToken;
                     HttpContext.Session.Set<UserViewModel>("user", user);
                     return RedirectToAction("Index", "Home");
                 }

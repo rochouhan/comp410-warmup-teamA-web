@@ -18,37 +18,48 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
         {
         }
 
-        public async Task<bool> Authenticate(string user_id)
+        public async Task<string> Authenticate(string user_id)
         {
             try
             {
                 using (var requestMessage =
-                    new HttpRequestMessage(HttpMethod.Post, "https://teamafrontendapi.azure-api.net/v2/api/AuthHttpTrigger"))
+                    new HttpRequestMessage(HttpMethod.Post, "https://teamafrontendapi.azure-api.net/api/auth?user_id=" + user_id))
                 {
                     // user_id included in body
                     requestMessage.Content = new StringContent(
                         JsonConvert.SerializeObject(new { user_id }),
                         Encoding.UTF8, "application/json");
 
-                    HttpResponseMessage response = await client.SendAsync(requestMessage);
-                    response.EnsureSuccessStatusCode();
-                    string responseBody = await response.Content.ReadAsStringAsync();
 
-                    AuthStructure jsonResponse = JsonConvert.DeserializeObject<AuthStructure>(responseBody);
-                    System.Diagnostics.Debug.WriteLine(responseBody);
-                    return jsonResponse.success;
+                    HttpResponseMessage response = await client.SendAsync(requestMessage);
+                    // System.Diagnostics.Debug.WriteLine(response);
+                    // System.Diagnostics.Debug.WriteLine("===============================");
+                    // System.Diagnostics.Debug.WriteLine(response.EnsureSuccessStatusCode());
+                    // System.Diagnostics.Debug.WriteLine("===============================");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string responseBody = await response.Content.ReadAsStringAsync();
+
+                        AuthStructure jsonResponse = JsonConvert.DeserializeObject<AuthStructure>(responseBody);
+                        System.Diagnostics.Debug.WriteLine(responseBody);
+                        System.Diagnostics.Debug.WriteLine(jsonResponse.token);
+                        return jsonResponse.token;
+                    } else {
+                        return null;
+                    }
+                    //return jsonResponse.success;
                 }
             }
             catch (HttpRequestException e)
             {
-                Console.WriteLine("\nException Caught!");
-                Console.WriteLine("Message :{0} ", e.Message);
+                System.Diagnostics.Debug.WriteLine("\nException Caught!");
+                System.Diagnostics.Debug.WriteLine("Message :{0} ", e.Message);
             }
             
-            return false; // else case
+            return null; // else case
         }
 
-        public async Task<TableViewModel> Execute(string userID, ICollection<KVPair> queryParams)
+        public async Task<TableViewModel> Execute(string user_id, string authToken, ICollection<KVPair> queryParams)
         {
             //foreach (KVPair kvpair in queryParams)
             //{
@@ -56,6 +67,8 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
             //}
 
             // for now just getting first query to make request to API
+            System.Diagnostics.Debug.WriteLine("TOKEN:");
+            System.Diagnostics.Debug.WriteLine(authToken);
             KVPair[] queryParamsList = new KVPair[queryParams.Count];
             queryParams.CopyTo(queryParamsList, 0);
             KVPair firstKVPair = queryParamsList[0];
@@ -66,7 +79,8 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
             //string requestString = "https://my-resource.azure-api.net/api/read?user_id=" + userID + "&characteristic=" + chars + "&operator=" + op + "&value=" + val;
 
             // current version of the API endpoint for now
-            string requestString = "https://my-resource.azure-api.net/v3/api/ReadFunction?" + chars + "=" + val;
+            // string requestString = "https://my-resource.azure-api.net/v3/api/ReadFunction?" + chars + "=" + val;
+            string requestString = "https://teamafrontendapi.azure-api.net/api/read?user_id=" + user_id + "&characteristic=" + chars + "&operator=" + op + "&value=" + val;
             System.Diagnostics.Debug.WriteLine(requestString);
 
             try
@@ -74,7 +88,7 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
                 using (var requestMessage =
                 new HttpRequestMessage(HttpMethod.Get, requestString))
                 {
-                    requestMessage.Headers.Add("Ocp-Apim-Subscription-Key", "83a2f1db11ec471ebf824546a59cfef0");
+                    requestMessage.Headers.Add("Authorization", authToken);
                     HttpResponseMessage response = await client.SendAsync(requestMessage);
                     response.EnsureSuccessStatusCode();
                     string responseBody = await response.Content.ReadAsStringAsync();
@@ -91,8 +105,8 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
             }
             catch (HttpRequestException e)
             {
-                Console.WriteLine("\nException Caught!");
-                Console.WriteLine("Message :{0} ", e.Message);
+                System.Diagnostics.Debug.WriteLine("\nException Caught!");
+                System.Diagnostics.Debug.WriteLine("Message :{0} ", e.Message);
             }
 
             return new TableViewModel();

@@ -48,7 +48,7 @@ namespace warmup_project_teama_web_app.Controllers
             ViewData["userID"] = user.userID;
             if (ModelState.IsValid && dataList.Count > 0)
             {
-                TableViewModel entries = cloudAdapter.Execute(user.userID, dataList).Result;
+                TableViewModel entries = cloudAdapter.Execute(user.userID, user.authToken, dataList).Result;
                 return View(entries);
             }
             return View(new TableViewModel());
