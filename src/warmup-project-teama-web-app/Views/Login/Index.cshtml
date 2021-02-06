@@ -2,30 +2,21 @@
     ViewData["Title"] = "Login";
 }
 
-<h2>Login</h2>
+<h1 class="login-header">Title (TBA)</h1>
 
 @model UserViewModel 
 @using warmup_project_teama_web_app.Models
 @using (Html.BeginForm("Index", "Login", FormMethod.Post))
 {
     //@Html.ValidationSummary(true)
-    <fieldset>
-        <table class="table" aria-labelledby="tabelLabel">
-            <thead>
-                <tr>
-                    <td>Username</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        @Html.TextBoxFor(m => m.userID)
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <p>
-            <input type="submit" value="Login" />
-        </p>
-    </fieldset>
+<fieldset>
+    <div class="forms">
+        <div class="login-form">
+            <h4 className="form-header">Welcome!</h4>
+            <input name='user.userID' type='text' placeholder="Username" value='' />
+            <input class="btn form-button" type="submit" value="Login" />
+        </div>
+    </div>
+    
+</fieldset>
 }
