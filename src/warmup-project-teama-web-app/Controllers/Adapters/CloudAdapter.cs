@@ -23,7 +23,7 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
             try
             {
                 using (var requestMessage =
-                    new HttpRequestMessage(HttpMethod.Post, "https://my-resource.azure-api.net/api/auth"))
+                    new HttpRequestMessage(HttpMethod.Post, "https://teamafrontendapi.azure-api.net/v2/api/AuthHttpTrigger"))
                 {
                     // user_id included in body
                     requestMessage.Content = new StringContent(
