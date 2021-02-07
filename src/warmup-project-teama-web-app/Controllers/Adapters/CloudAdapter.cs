@@ -23,7 +23,7 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
             try
             {
                 using (var requestMessage =
-                    new HttpRequestMessage(HttpMethod.Post, "https://teamafrontendapi.azure-api.net/api/auth?user_id=" + user_id))
+                    new HttpRequestMessage(HttpMethod.Post, "https://teamafrontendapi.azure-api.net/v2/api/AuthFunction?user_id=" + user_id))
                 {
                     // user_id included in body
                     requestMessage.Content = new StringContent(
@@ -61,26 +61,13 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
 
         public async Task<TableViewModel> Execute(string user_id, string authToken, ICollection<KVPair> queryParams)
         {
-            //foreach (KVPair kvpair in queryParams)
-            //{
-            //    queries.Add(kvpair.ToString());
-            //}
-
-            // for now just getting first query to make request to API
             System.Diagnostics.Debug.WriteLine("TOKEN:");
             System.Diagnostics.Debug.WriteLine(authToken);
-            KVPair[] queryParamsList = new KVPair[queryParams.Count];
-            queryParams.CopyTo(queryParamsList, 0);
-            KVPair firstKVPair = queryParamsList[0];
 
-            string chars = firstKVPair.Key;
-            string op = firstKVPair.Op;
-            string val = firstKVPair.Value;
-            //string requestString = "https://my-resource.azure-api.net/api/read?user_id=" + userID + "&characteristic=" + chars + "&operator=" + op + "&value=" + val;
-
+            // convert list of query parameters into JSON string
+            string paramsString = JsonConvert.SerializeObject(queryParams);
             // current version of the API endpoint for now
-            // string requestString = "https://my-resource.azure-api.net/v3/api/ReadFunction?" + chars + "=" + val;
-            string requestString = "https://teamafrontendapi.azure-api.net/api/read?user_id=" + user_id + "&characteristic=" + chars + "&operator=" + op + "&value=" + val;
+            string requestString = "https://teamafrontendapi.azure-api.net/v2/api/ReadFunction?user_id=" + user_id + "&query=" + paramsString;
             System.Diagnostics.Debug.WriteLine(requestString);
 
             try
@@ -145,7 +132,7 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
 
             foreach (OtherInfoStructure otherInfo in otherInfoList)
             {
-                otherInfoDict[otherInfo.contentType] = otherInfo.value;
+                otherInfoDict[otherInfo.name] = otherInfo.value;
             }
 
             return otherInfoDict;
