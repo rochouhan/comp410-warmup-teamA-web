@@ -9,6 +9,14 @@
 
 @model UserViewModel 
 @using warmup_project_teama_web_app.Models
+
+
+@{
+    string DisplayError() {
+        return Model.userID == null ? "none" : "block";
+    }
+}
+
 @using (Html.BeginForm("Index", "Login", FormMethod.Post))
 {
     //@Html.ValidationSummary(true)
@@ -18,6 +26,7 @@
             <h4 className="form-header">Welcome!</h4>
             <input name='user.userID' type='text' placeholder="Username" value='' />
             <input class="btn form-button" type="submit" value="Login" />
+            <p style="color: red; display: @DisplayError()">Invalid username! Please try again</p>
         </div>
     </div>
     

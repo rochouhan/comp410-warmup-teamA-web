@@ -82,16 +82,18 @@
                 {
                     if (data != null)
                     {
-                        string otherInfo = "";
-                        foreach (var pair in data.otherinfo)
-                        {
-                            otherInfo += pair.Key + ": " + pair.Value + "\n";
-                        }
                         <tr>
                             <td>@data.uid</td>
                             <td>@data.date</td>
                             <td>(@data.latitude, @data.longitude)</td>
-                            <td>@otherInfo</td>
+                            <td>
+                                <ul>
+                                    @foreach (KeyValuePair<string, string> pair in data.otherinfo)
+                                    {
+                                        <li><b>@pair.Key</b>: @pair.Value</li>
+                                    }
+                                </ul>
+                            </td>
                         </tr>
 
                     }

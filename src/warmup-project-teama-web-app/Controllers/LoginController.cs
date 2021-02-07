@@ -19,7 +19,7 @@ namespace warmup_project_teama_web_app.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            return View("Index");
+            return View(new UserViewModel());
         }
 
         [HttpPost]
@@ -35,7 +35,7 @@ namespace warmup_project_teama_web_app.Controllers
                     return RedirectToAction("Index", "Home");
                 }
             }
-            return Index();
+            return View(user);
         }
     }
 }
