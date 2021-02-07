@@ -54,11 +54,6 @@ namespace warmup_project_teama_web_app.Controllers
             return View(new TableViewModel());
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
