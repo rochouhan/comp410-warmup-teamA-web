@@ -65,7 +65,29 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
             System.Diagnostics.Debug.WriteLine(authToken);
 
             // convert list of query parameters into JSON string
-            string paramsString = JsonConvert.SerializeObject(queryParams);
+            var count = 0;
+            var len = queryParams.Count;
+            var paramsString = "[";
+            foreach (var pair in queryParams)
+            {
+                count++;
+                paramsString += "{'characteristic': '" + pair.Key + "', 'operator': '" + pair.Op + "', 'value': ";
+                try
+                {
+                    Convert.ToDouble(pair.Value);
+                    paramsString += pair.Value + "}";
+                }
+                catch (FormatException)
+                {
+                    paramsString += "'" + pair.Value + "'}";
+                }
+                if (count < len)
+                {
+                    paramsString += ", ";
+                } 
+            }
+            paramsString += "]";
+
             // current version of the API endpoint for now
             string requestString = "https://teamafrontendapi.azure-api.net/v2/api/ReadFunction?user_id=" + user_id + "&query=" + paramsString;
             System.Diagnostics.Debug.WriteLine(requestString);
