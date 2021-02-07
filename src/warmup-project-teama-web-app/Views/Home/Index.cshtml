@@ -68,38 +68,34 @@
         <legend class="center-horizontally">Query Data</legend>
         <thead>
             <tr>
-                <th>User ID</th>
-                <th>Date</th>
-                <th>Location</th>
-                <th>Additional Information</th>
+                <th class="small-width">User ID</th>
+                <th class="small-width">Date</th>
+                <th class="small-width">Location</th>
+                <th class="large-width">Additional Information</th>
             </tr>
         </thead>
-    </table>
-    <div class="js-pscroll">
-        <table>
-            <tbody>
-                @foreach (var data in Model.table)
+        <tbody>
+            @foreach (var data in Model.table)
+            {
+                if (data != null)
                 {
-                    if (data != null)
-                    {
-                        <tr>
-                            <td>@data.uid</td>
-                            <td>@data.date</td>
-                            <td>(@data.latitude, @data.longitude)</td>
-                            <td>
-                                <ul>
-                                    @foreach (KeyValuePair<string, string> pair in data.otherinfo)
-                                    {
-                                        <li><b>@pair.Key</b>: @pair.Value</li>
-                                    }
-                                </ul>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>@data.uid</td>
+                        <td>@data.date</td>
+                        <td>(@data.latitude, @data.longitude)</td>
+                        <td class="large-width">
+                            <ul>
+                                @foreach (KeyValuePair<string, string> pair in data.otherinfo)
+                                {
+                                    <li><b>@pair.Key</b>: @pair.Value</li>
+                                }
+                            </ul>
+                        </td>
+                    </tr>
 
-                    }
                 }
-            </tbody>
-        </table>
-    </div>
+            }
+        </tbody>
+    </table>
 </div>
 
