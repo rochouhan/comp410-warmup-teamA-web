@@ -132,7 +132,8 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
 
             foreach (OtherInfoStructure otherInfo in otherInfoList)
             {
-                otherInfoDict[otherInfo.name] = otherInfo.value;
+                string key = otherInfo.name + " (" + otherInfo.contentType + ")";
+                otherInfoDict[key] = otherInfo.value;
             }
 
             return otherInfoDict;
