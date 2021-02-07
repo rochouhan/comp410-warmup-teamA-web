@@ -4,35 +4,39 @@
     ViewData["Title"] = "Home Page";
 }
 
+<div class="center-horizontally">
+    <img src="https://i.imgur.com/D4ccGmN.png" style="width: 70%;">
+</div>
+<h2 class="center-horizontally">Welcome back @ViewData["userID"]!</h2>
+<div class="query-form">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend class="center-horizontally">Query Parameters</legend>
+            <div>
+                <input id="btnAddQuery" type="button" class="btn-sm form-button"
+                       onclick="addRow();" value="Add Query" />
+            </div>
+            <table class="table" aria-labelledby="tabelLabel">
+                <thead>
+                    <tr>
+                        <th>Key</th>
+                        <th>op</th>
+                        <th>Value</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="tbQueries">
+                </tbody>
+            </table>
+            <p class="center-horizontally">
+                <input class="btn form-button" type="submit" value="Query!" />
+            </p>
+        </fieldset>
+    }
+</div>
 
-<h1>@ViewData["Title"]</h1>
-<h2>User ID: @ViewData["userID"]</h2>
-@using (Html.BeginForm())
-{
-    @Html.ValidationSummary(true)
-    <fieldset>
-        <legend>Query Parameters</legend>
-        <div>
-            <input id="btnAddQuery" type="button"
-                   onclick="addRow();" value="Add Query" />
-        </div>
-        <table class="table" aria-labelledby="tabelLabel">
-            <thead>
-                <tr>
-                    <td>Key</td>
-                    <td>op</td>
-                    <td>Value</td>
-                    <td></td>
-                </tr>
-            </thead>
-            <tbody id="tbQueries">
-            </tbody>
-        </table>
-        <p>
-            <input type="submit" value="Query" />
-        </p>
-    </fieldset>
-}
 <input type="hidden" id="totalQueries" value="0" />
 
 <script language="javascript" type="text/javascript">
@@ -46,9 +50,9 @@
         var opCell = "<td><select id='Queries_" + tq + "_Title' name='dataList[" + tq + "].Op'>" +
             "<option value='eq'>=</option><option value='lt'><</option><option value='gt'>></option></select>";
         var valueCell = "<td><input id='Queries_" + tq + "__Title' name='dataList[" + tq + "].Value' type='text' value='' /></td>";
-        var removeCell = "<td><input id='btnAddQuery' type='button' value='Remove' onclick='removeRow(" + tq + ");' /></td>";
+        var removeCell = "<td><input id='btnAddQuery' class='btn-sm form-button' type='button' value='Remove' onclick='removeRow(" + tq + ");' /></td>";
 
-        var newRow = "<tr id='trQuery" + tq + "'>" + 
+        var newRow = "<tr id='trQuery" + tq + "'>" +
             indexCell + keyCell + opCell + valueCell + removeCell + "</tr>";
         $("#tbQueries").append(newRow);
     }
@@ -59,7 +63,9 @@
     }
 </script>
 
-<table class="table table-striped" aria-labelledby="tabelLabel">
+<div class="query-form">
+    <table>
+        <legend class="center-horizontally">Query Data</legend>
         <thead>
             <tr>
                 <th>User ID</th>
@@ -68,21 +74,30 @@
                 <th>Additional Information</th>
             </tr>
         </thead>
-        <tbody>
-            @foreach (var data in Model.table) {
-                if (data != null) {
-                    string otherInfo = "";
-                    foreach (var pair in data.otherinfo) {
-                        otherInfo += pair.Key + ": " + pair.Value + "\n";
-                    }
-                    <tr>
-                        <td>@data.uid</td>
-                        <td>@data.date</td>
-                        <td>(@data.latitude, @data.longitude)</td>
-                        <td>@otherInfo</td>
-                    </tr>
+    </table>
+    <div class="js-pscroll">
+        <table>
+            <tbody>
+                @foreach (var data in Model.table)
+                {
+                    if (data != null)
+                    {
+                        string otherInfo = "";
+                        foreach (var pair in data.otherinfo)
+                        {
+                            otherInfo += pair.Key + ": " + pair.Value + "\n";
+                        }
+                        <tr>
+                            <td>@data.uid</td>
+                            <td>@data.date</td>
+                            <td>(@data.latitude, @data.longitude)</td>
+                            <td>@otherInfo</td>
+                        </tr>
 
+                    }
                 }
-            }
-        </tbody>
-</table>
+            </tbody>
+        </table>
+    </div>
+</div>
+
