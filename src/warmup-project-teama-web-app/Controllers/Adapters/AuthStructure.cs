@@ -1,9 +1,7 @@
-﻿public class AuthStructure
+﻿/// <summary>
+/// Structure used to parse the response received from the database when authenticating a user.
+/// </summary>
+public class AuthStructure
 {
-    // previous structure
-    // public bool success { get; set; }
-    // public string message { get; set; }
-
-    // updated structure
     public string token { get; set; }
 }

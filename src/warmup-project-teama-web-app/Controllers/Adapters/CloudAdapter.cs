@@ -9,6 +9,9 @@ using System.Text;
 
 namespace warmup_project_teama_web_app.Controllers.Adapters
 {
+    /// <summary>
+    /// An adapter that will be used to communicate between the web app and the external API.
+    /// </summary>
     public class CloudAdapter : ICloudAdapter
     {
 
@@ -18,6 +21,11 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
         {
         }
 
+        /// <summary>
+        /// Authenticate user of the web app with API.
+        /// </summary>
+        /// <param name="user_id">Auth to pass to API for authentication.</param>
+        /// <returns>Authentication token to use for future API calls.</returns>
         public async Task<string> Authenticate(string user_id)
         {
             try
@@ -25,29 +33,21 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
                 using (var requestMessage =
                     new HttpRequestMessage(HttpMethod.Post, "https://teamafrontendapi.azure-api.net/v2/api/AuthFunction?user_id=" + user_id))
                 {
-                    // user_id included in body
                     requestMessage.Content = new StringContent(
                         JsonConvert.SerializeObject(new { user_id }),
                         Encoding.UTF8, "application/json");
 
 
                     HttpResponseMessage response = await client.SendAsync(requestMessage);
-                    // System.Diagnostics.Debug.WriteLine(response);
-                    // System.Diagnostics.Debug.WriteLine("===============================");
-                    // System.Diagnostics.Debug.WriteLine(response.EnsureSuccessStatusCode());
-                    // System.Diagnostics.Debug.WriteLine("===============================");
                     if (response.IsSuccessStatusCode)
                     {
                         string responseBody = await response.Content.ReadAsStringAsync();
 
                         AuthStructure jsonResponse = JsonConvert.DeserializeObject<AuthStructure>(responseBody);
-                        System.Diagnostics.Debug.WriteLine(responseBody);
-                        System.Diagnostics.Debug.WriteLine(jsonResponse.token);
                         return jsonResponse.token;
                     } else {
                         return null;
                     }
-                    //return jsonResponse.success;
                 }
             }
             catch (HttpRequestException e)
@@ -56,39 +56,20 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
                 System.Diagnostics.Debug.WriteLine("Message :{0} ", e.Message);
             }
             
-            return null; // else case
+            return null;
         }
 
+
+        /// <summary>
+        /// Executes the query by making a remote call to the API
+        /// </summary>
+        /// <param name="userID"> User ID of the user making the query. To be used in the API call.</param>
+        /// <param name="authToken">Authentication token to be used in the API call.</param>
+        /// <param name="queryParams">A series of params that will be used to query the database</param>
+        /// <returns>A response from API that has been transformed into a TableViewModel object.</returns>
         public async Task<TableViewModel> Execute(string user_id, string authToken, ICollection<KVPair> queryParams)
         {
-            System.Diagnostics.Debug.WriteLine("TOKEN:");
-            System.Diagnostics.Debug.WriteLine(authToken);
-
-            // convert list of query parameters into JSON string
-            var count = 0;
-            var len = queryParams.Count;
-            var paramsString = "[";
-            foreach (var pair in queryParams)
-            {
-                count++;
-                paramsString += "{'characteristic': '" + pair.Key + "', 'operator': '" + pair.Op + "', 'value': ";
-                try
-                {
-                    Convert.ToDouble(pair.Value);
-                    paramsString += pair.Value + "}";
-                }
-                catch (FormatException)
-                {
-                    paramsString += "'" + pair.Value + "'}";
-                }
-                if (count < len)
-                {
-                    paramsString += ", ";
-                } 
-            }
-            paramsString += "]";
-
-            // current version of the API endpoint for now
+            string paramsString = ToRequestFormat(queryParams);
             string requestString = "https://teamafrontendapi.azure-api.net/v2/api/ReadFunction?user_id=" + user_id + "&query=" + paramsString;
             System.Diagnostics.Debug.WriteLine(requestString);
 
@@ -101,11 +82,6 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
                     HttpResponseMessage response = await client.SendAsync(requestMessage);
                     response.EnsureSuccessStatusCode();
                     string responseBody = await response.Content.ReadAsStringAsync();
-
-                    System.Diagnostics.Debug.WriteLine("RESPONSE===================================================");
-                    System.Diagnostics.Debug.WriteLine(response);
-                    System.Diagnostics.Debug.WriteLine("RESPONSE BODY==============================================");
-                    System.Diagnostics.Debug.WriteLine(responseBody);
 
                     List<RootStructure> jsonResponse = JsonConvert.DeserializeObject<List<RootStructure>>(responseBody);
 
@@ -121,7 +97,11 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
             return new TableViewModel();
         }
 
-
+        /// <summary>
+        /// Helper function for Execute. Converts data from API to feed to ViewModel.
+        /// </summary>
+        /// <param name="json">JSON object received from API.</param>
+        /// <returns>TableViewModel.</returns>
         public TableViewModel ToViewModel(List<RootStructure> json)
         {
             // list of entries for the ViewModel
@@ -148,6 +128,12 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
             return new TableViewModel(entries);
         }
 
+        /// <summary>
+        /// Helper function for Execute. Converts data from list of OtherInfoStructure to 
+        /// Dictionary of string, string pairs.
+        /// </summary>
+        /// <param name="otherInfoList">The list of OtherInfoStructure from the parsed JSON object</param>
+        /// <returns>String to format into HTTP request.</returns>
         public Dictionary<string, string> ToDictionary(List<OtherInfoStructure> otherInfoList)
         {
             Dictionary<string, string> otherInfoDict = new Dictionary<string, string>();
@@ -161,20 +147,38 @@ namespace warmup_project_teama_web_app.Controllers.Adapters
             return otherInfoDict;
         }
 
-        public string ToRequestFormat()
+        /// <summary>
+        /// Helper function for Execute. Converts query from a collection of KVPairs to
+        /// a JSON string.
+        /// </summary>
+        /// <param name="queryParams">Collection of queries from the View.</param>
+        /// <returns>A JSON string to be used in the request of the API call.</returns>
+        public string ToRequestFormat(ICollection<KVPair> queryParams)
         {
-            return "";
+            var count = 0;
+            var len = queryParams.Count;
+            var paramsString = "[";
+            foreach (var pair in queryParams)
+            {
+                count++;
+                paramsString += "{'characteristic': '" + pair.Key + "', 'operator': '" + pair.Op + "', 'value': ";
+                try
+                {
+                    Convert.ToDouble(pair.Value);
+                    paramsString += pair.Value + "}";
+                }
+                catch (FormatException)
+                {
+                    paramsString += "'" + pair.Value + "'}";
+                }
+                if (count < len)
+                {
+                    paramsString += ", ";
+                }
+            }
+            paramsString += "]";
+
+            return paramsString;
         }
-
-        //public async Task Main(string[] args)
-        //{
-            //Console.WriteLine("Hello World..!");
-
-            //gotAuthToken = await Authenticate("83a2f1db11ec471ebf824546a59cfef0");
-
-            //string executeReturn = await Execute("user_id eq user21231");
-            //System.Diagnostics.Debug.WriteLine("finished");
-
-        //}
     }
 }

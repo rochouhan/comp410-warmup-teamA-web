@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 
-// Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+/// <summary>
+/// Structure used to parse the root of the JSON response received from the database when making a query.
+/// </summary>
 public class RootStructure
 {
     public string user_id { get; set; } 
