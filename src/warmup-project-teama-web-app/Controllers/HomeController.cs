@@ -14,13 +14,23 @@ namespace warmup_project_teama_web_app.Controllers
 {
     public class HomeController : Controller
     {
-
+        /// <summary>
+        /// A static cloud adapter instance used to communicate between
+        /// the controller and the cloud adapter
+        /// </summary>
         private ICloudAdapter cloudAdapter = new CloudAdapter();
 
+        /// <summary>
+        /// Empty Constructor
+        /// </summary>
         public HomeController()
         {
         }
 
+        /// <summary>
+        /// Default home page. Features an empty query and data table.
+        /// </summary>
+        /// <returns>Home page with an empty TableViewModel</returns>
         public IActionResult Index()
         {
             UserViewModel user = getUserFromSession();
@@ -54,12 +64,10 @@ namespace warmup_project_teama_web_app.Controllers
             return View(new TableViewModel());
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-
+        /// <summary>
+        /// Shorthand function for getting the user from the current session
+        /// </summary>
+        /// <returns>The UserViewModel info of the current user</returns>
         private UserViewModel getUserFromSession()
         {
             return HttpContext.Session.Get<UserViewModel>("user");
