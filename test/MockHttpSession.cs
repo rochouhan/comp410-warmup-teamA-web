@@ -14,6 +14,10 @@ using System.Threading;
 
 namespace Tests
 {
+    /// <summary>
+    /// A mocked HTTP session used for testing purposes to emulate the
+    /// networking requests made. 
+    /// </summary>
     public class MockHttpSession : ISession
     {
         Dictionary<string, object> sessionStorage = new Dictionary<string, object>();

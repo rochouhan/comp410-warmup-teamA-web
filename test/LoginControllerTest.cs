@@ -9,8 +9,16 @@ using Microsoft.AspNetCore.Http;
 
 namespace Tests
 {
+    /// <summary>
+    /// Tests for the Login Controller. 
+    /// </summary>
     public class LoginControllerTest
     {
+
+        /// <summary>
+        /// Tests the index route for the login screen. It should
+        /// render the index view. 
+        /// </summary>
         [Fact]
         public void TestIndex()
         {
@@ -19,6 +27,10 @@ namespace Tests
             Assert.Equal("Index", result.ViewName);
         }
 
+        /// <summary>
+        /// Tests the index view when there is no user available.
+        /// Similarly, it should render the index view. 
+        /// </summary>
         [Fact]
         public void TestIndexWithInvalidUserViewModel()
         {

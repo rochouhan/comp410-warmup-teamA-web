@@ -10,8 +10,16 @@ using Microsoft.AspNetCore.Http;
 
 namespace Tests
 {
+    /// <summary>
+    /// Tests for the Home Controller. 
+    /// </summary>
     public class HomeControllerTest
     {
+        /// <summary>
+        /// Test the index route when there is no user available. It
+        /// should reroute to the login screen because no one has
+        /// logged in. 
+        /// </summary>
         [Fact]
         public void TestIndexWithNoUser()
         {
