@@ -23,7 +23,7 @@ namespace warmup_project_teama_web_app.Controllers
         /// <returns>Login page with an empty UserViewModel</returns>
         public IActionResult Index()
         {
-            return View(new UserViewModel());
+            return View("Index", new UserViewModel());
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace warmup_project_teama_web_app.Controllers
                     return RedirectToAction("Index", "Home");
                 }
             }
-            return View(user);
+            return View("Index", user);
         }
     }
 }
